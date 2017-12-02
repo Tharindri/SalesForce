@@ -1,4 +1,10 @@
-div{background-color: rebeccapurple}
+.row{
+  background-color: rgb(21, 13, 37);
+}
+.panel panel-primary{
+  background-color: rgb(49, 28, 4)
+}
+
 div{
-  background-color: #350909  ;
+  background-color: rgb(4, 29, 31)
 }

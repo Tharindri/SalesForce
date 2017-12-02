@@ -1,5 +1,8 @@
 
-
-nav{
-    background-color:rgb(12, 12, 95)
+div{
+    background-color: rgb(73, 80, 83);
+}
+.container-fluid
+{
+    background-color:rgb(12, 12, 95);
 }
