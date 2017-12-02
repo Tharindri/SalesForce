@@ -1,0 +1,45 @@
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    {{pageTitle}}
+  </div>
+  <div class="panel-body">
+    <div class="row">
+
+    </div>
+
+
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+        <tr>
+
+          <th>Id</th>
+          <th>Name</th>
+          <th>Brand</th>
+          <th>Category</th>
+          <th>Manufacture Price</th>
+          <th>Retail Price</th>
+          <th>Quantity</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{product.Id}}</td>
+          <td>{{product.Name}}</td>
+          <td>{{product.Brand}}</td>
+          <td>{{product.Category}}</td>
+          <td>{{product.ManufacturePrice}}</td>
+          <td>{{product.RetailPrice}}</td>
+          <td>{{product.Quatity}}</td>
+        </tr>
+        </tbody>
+
+      </table>
+
+
+    </div>
+  </div>
+</div>
