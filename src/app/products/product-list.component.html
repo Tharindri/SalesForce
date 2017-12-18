@@ -22,7 +22,7 @@
           <th>Manufacture Price</th>
           <th>Retail Price</th>
           <th>Quantity</th>
-
+          <th>&nbsp;</th>
         </tr>
         </thead>
         <tbody>
@@ -34,12 +34,37 @@
           <td>{{product.ManufacturePrice}}</td>
           <td>{{product.RetailPrice}}</td>
           <td>{{product.Quatity}}</td>
+        
+        <td><button class="btn btn-info" (click)="showEditProductForm(product)"><i class="fa fa-edit">edit</i></button>
+          <button class="btn btn-danger"><i class="fa fa-minus"></i></button>
+          
+        </td>
         </tr>
         </tbody>
 
       </table>
+<button class="btn btn-success" (click)="showAddProductForm()">Add New Product<i class="fa fa-plus"></i></button>
+    <br/>
+    <br/>
+  <form *ngIf="productForm">
+    <h2>Product Details</h2>
+
+<p>Id : <input type="text" name="Id" [(ngModel)]="newProduct.Id"/></p>  
+<p>Name : <input type="text" name="Name" [(ngModel)]="newProduct.Name"/></p>
+<p>Brand : <input type="text" name="Brand" [(ngModel)]="newProduct.Brand"/></p>
+<p>Category : <input type="text" name="Category" [(ngModel)]="newProduct.Category"/></p>
+<p>ManufacturePrice : <input type="text" name="ManufacturePrice" [(ngModel)]="newProduct.ManufacturePrice"/></p>
+<p>RetailPrice : <input type="text" name="RetailPrice" [(ngModel)]="newProduct.RetailPrice"/></p>
+<p>Quantity : <input type="text" name="Quatity" [(ngModel)]="newProduct.Quatity"/></p>
+
+<p>
+  <button type="button" class="btn btn-primary" (click)="saveProduct(newProduct)">Submit</button>
+  <button type="button" class="btn btn-warning">Cancel</button>
+  
+</p>
 
 
+  </form>
     </div>
   </div>
 </div>

@@ -18,6 +18,12 @@ export class ProductService {
       .do(data => console.log('All: ' + JSON.stringify(data)))
       .catch(this.handleError);
   }
+  addProduct(product:IProduct):Observable<any>
+  {
+    console.log(product);
+    return this._http.post(this._productUrl,product);
+    
+  }
 
   private handleError(err: HttpErrorResponse){
     console.log('error prd');
