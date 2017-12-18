@@ -1,35 +1,92 @@
+<link rel="stylesheet" href="https://bootswatch.com/3/superhero/bootstrap.min.css">
+
 <form class="form-horizontal">
     <fieldset><br><br>
 
       <div class="form-group">
         <label for="inputEmail" class="col-lg-2 control-label">Email</label>
-        <div class="col-lg-10">
-          <input type="text" class="form-control" id="inputEmail" [(ngModel)]="registerData.Email" name="email" placeholder="Email">
+        <div class="col-lg-5">
+          <input type="text" class="form-control" id="inputEmail" [(ngModel)]="registerData.Email" name="Email" placeholder="Email">
         </div>
       </div>
 
+
+     
+
+      <div class="form-group">
+      <label for="inputNIC" class="col-lg-2 control-label">NIC</label>
+      <div class="col-lg-5">
+      <input type="text" class="form-control" id="inputNIC" [(ngModel)]="registerData.NIC" name="NIC" placeholder="NIC">
+      </div>
+      </div>
+
+
+      <div class="form-group">
+        <label for="inputUsername" class="col-lg-2 control-label">Username</label>
+        <div class="col-lg-5">
+        <input type="text" class="form-control" id="inputUsername" [(ngModel)]="registerData.Username" name="Username" placeholder="Username">
+        </div>
+        </div>
+      
+      <div class="form-group">
+        <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+        <div class="col-lg-5">
+          <input type="password" class="form-control" id="inputPassword" [(ngModel)]="registerData.Passwords" name="password" placeholder="Password">
+      </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="inputFirstName" class="col-lg-2 control-label">First Name</label>
+        <div class="col-lg-5">
+        <input type="text" class="form-control" id="inputFirstName" [(ngModel)]="registerData.FirstName" name="FirstName" placeholder="First Name">
+        </div>
+        </div>
+        
+        
+        <div class="form-group">
+          <label for="inputLastName" class="col-lg-2 control-label">Last Name</label>
+          <div class="col-lg-5">
+          <input type="text" class="form-control" id="inputLastName" [(ngModel)]="registerData.LastName" name="LastName" placeholder="Last Name">
+        </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputResidenceNo" class="col-lg-2 control-label">Residence No</label>
+          <div class="col-lg-5">
+          <input type="text" class="form-control" id="inputResidenceNo" [(ngModel)]="registerData.ResidenceNo" name="ResidenceNo" placeholder="ResidenceNo">
+        </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputLane" class="col-lg-2 control-label">Lane</label>
+          <div class="col-lg-5">
+          <input type="text" class="form-control" id="inputLane" [(ngModel)]="registerData.Lane" name="Lane" placeholder="Lane">
+        </div>
+        </div> 
+
+        <div class="form-group">
+          <label for="inputCity" class="col-lg-2 control-label">City
+          </label>
+          <div class="col-lg-5">
+          <input type="text" class="form-control" id="inputCity" [(ngModel)]="registerData.City" name="City" placeholder="City">
+        </div>
+        </div> 
+
+        <div class="form-group">
+        <label for="inputContactNo" class="col-lg-2 control-label">ContactNo</label>
+        <div class="col-lg-5">
+        <input type="text" class="form-control" id="inputContactNo" [(ngModel)]="registerData.ContactNo" name="ContactNo" placeholder="ContactNo">
+      </div>
+      </div> 
+     
       <div class="form-group">
         <label for="inputDistributorId" class="col-lg-2 control-label">Distributor Id</label>
-        <div class="col-lg-10">
+        <div class="col-lg-5">
           <input type="text" class="form-control" id="inputDistributorId" [(ngModel)]="registerData.DistributorId" name="DistributorId" placeholder="DistributorId">
         </div>
       </div>
 
 
-      <div class="form-group">
-        <label for="inputPassword" class="col-lg-2 control-label">Password</label>
-        <div class="col-lg-10">
-          <input type="password" class="form-control" id="inputPassword" [(ngModel)]="registerData.Passwords" name="password" placeholder="Password">
-          <div class="checkbox">
-            <label>
-              <input type="checkbox"> Checkbox
-            </label>
-          </div>
-        </div>
-      </div>
-      
-      
-      
       <div class="form-group">
         <div class="col-lg-10 col-lg-offset-2">
           <button type="reset" class="btn btn-default">Cancel</button>

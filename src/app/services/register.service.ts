@@ -13,7 +13,7 @@ export class RegisterService {
     constructor(private http: HttpClient) { }
 
     sendUserRegistration(registerData:User):Observable<any>{
-        return this.http.post(this.userUrl,registerData)
+        return this.http.post(this.userUrl,registerData);
          
       }
     
