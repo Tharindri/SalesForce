@@ -14,29 +14,36 @@ export class ProductListComponent implements OnInit {
   errorMessage: string;
   private products: IProduct[];
   productForm:boolean=false;
+ editProductForm:boolean=false;
   isNewForm:boolean;
   newProduct:any={};
+  editedProduct:any={};
 
   constructor(private _productService: ProductService) {
     this._productService.getProducts()
-      .subscribe(res => { this.products = res;
-
-        
-        },
+      .subscribe(res => { this.products = res; },
         error => this.errorMessage = <any>error);
-    
+      
   }
+
+
+ 
+
+
   showEditProductForm(product:IProduct)
 {
 if(!product){
   this.productForm=false;
   return;
 }
-this.productForm=true;
-this.isNewForm=false;
-this.newProduct=product;
+this.editProductForm=true;
+//this.isNewForm=false;
+this.editedProduct=product;
 
 }
+
+
+
 showAddProductForm()
 {
   if(this.products.length)
@@ -46,18 +53,43 @@ showAddProductForm()
   this.productForm=true;
   this.isNewForm=true;
 }
+
+
+
 saveProduct(product:IProduct)
 {
   if(this.isNewForm)
   {
-this._productService.addProduct(product);
-  }
-  else 
-  {
+    this.products.push(product);
+this._productService.addProduct(product)
+    .subscribe(product => {
+    
+  
+});
 
   }
+  
   this.productForm=false;
 }
+
+
+updateProduct(product:IProduct){
+
+this._productService.updateProduct(this.editedProduct).subscribe(product=>{
+
+});
+this.editProductForm=false;
+this.editedProduct={};
+}
+
+cancelEdits()
+{
+  this.editedProduct={};
+  this.editProductForm=false;
+
+}
+
+
   ngOnInit(): void {
 
 

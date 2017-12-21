@@ -22,6 +22,7 @@
           <th>Manufacture Price</th>
           <th>Retail Price</th>
           <th>Quantity</th>
+          <th>DiscountType</th>
           <th>&nbsp;</th>
         </tr>
         </thead>
@@ -33,7 +34,8 @@
           <td>{{product.Category}}</td>
           <td>{{product.ManufacturePrice}}</td>
           <td>{{product.RetailPrice}}</td>
-          <td>{{product.Quatity}}</td>
+          <td>{{product.Quantity}}</td>
+          <td>{{product.DiscountType}}</td>
         
         <td><button class="btn btn-info" (click)="showEditProductForm(product)"><i class="fa fa-edit">edit</i></button>
           <button class="btn btn-danger"><i class="fa fa-minus"></i></button>
@@ -47,7 +49,7 @@
     <br/>
     <br/>
   <form *ngIf="productForm">
-    <h2>Product Details</h2>
+    <h2>Add New Product</h2>
 
 <p>Id : <input type="text" name="Id" [(ngModel)]="newProduct.Id"/></p>  
 <p>Name : <input type="text" name="Name" [(ngModel)]="newProduct.Name"/></p>
@@ -55,7 +57,8 @@
 <p>Category : <input type="text" name="Category" [(ngModel)]="newProduct.Category"/></p>
 <p>ManufacturePrice : <input type="text" name="ManufacturePrice" [(ngModel)]="newProduct.ManufacturePrice"/></p>
 <p>RetailPrice : <input type="text" name="RetailPrice" [(ngModel)]="newProduct.RetailPrice"/></p>
-<p>Quantity : <input type="text" name="Quatity" [(ngModel)]="newProduct.Quatity"/></p>
+<p>Quantity : <input type="text" name="Quantity" [(ngModel)]="newProduct.Quantity"/></p>
+<p>Discount Type : <input type="text" name="DiscountType" [(ngModel)]="newProduct.DiscountType"/></p>
 
 <p>
   <button type="button" class="btn btn-primary" (click)="saveProduct(newProduct)">Submit</button>
@@ -65,6 +68,30 @@
 
 
   </form>
+
+
+
+  <form *ngIf="editProductForm">
+    <h2>Edit Product Details</h2>
+
+<p>Id : <input type="text" name="Id" [(ngModel)]="editedProduct.Id"/></p>  
+<p>Name : <input type="text" name="Name" [(ngModel)]="editedProduct.Name"/></p>
+<p>Brand : <input type="text" name="Brand" [(ngModel)]="editedProduct.Brand"/></p>
+<p>Category : <input type="text" name="Category" [(ngModel)]="editedProduct.Category"/></p>
+<p>ManufacturePrice : <input type="text" name="ManufacturePrice" [(ngModel)]="editedProduct.ManufacturePrice"/></p>
+<p>RetailPrice : <input type="text" name="RetailPrice" [(ngModel)]="editedProduct.RetailPrice"/></p>
+<p>Quantity : <input type="text" name="Quantity" [(ngModel)]="editedProduct.Quantity"/></p>
+<p>Discount Type : <input type="text" name="DiscountType" [(ngModel)]="editedProduct.DiscountType"/></p>
+
+<p>
+  <button type="button" class="btn btn-primary" (click)="updateProduct(editedProduct)">Submit</button>
+  <button type="button" class="btn btn-warning" (click)="cancelEdits()">Cancel</button>
+  
+</p>
+
+
+  </form>
+
     </div>
   </div>
 </div>

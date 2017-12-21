@@ -11,6 +11,7 @@ import { ProductListComponent } from './products/product-list.component';
 import { WelcomeComponent } from './home/welcome.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { OutletComponent } from './outlet/outlet.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { RegisterComponent } from './register/register.component';
     ProductListComponent,
     WelcomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    OutletComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +32,8 @@ import { RegisterComponent } from './register/register.component';
       {path: 'register', component: RegisterComponent},
       {path: 'login', component: LoginComponent},
       {path: 'welcome', component: WelcomeComponent},
+      {path: 'outlet', component: OutletComponent},
+      
       {path: '', redirectTo: 'welcome', pathMatch: 'full'},
       {path: '**', redirectTo: 'welcome', pathMatch: 'full'},
     ])

@@ -1,6 +1,6 @@
 export class User {
     
-    
+   Id:number; 
     NIC: string;
     Username: string;
     Passwords: string;
@@ -12,8 +12,6 @@ export class User {
     ContactNo: string;
     Email: string;
     Gender: string;
-    Targets: 0;
-    Achievements: 0;
-    DistributorId: 0;
+    UserType:String;
     
 }

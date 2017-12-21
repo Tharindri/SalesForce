@@ -1,9 +1,8 @@
 import {Component} from '@angular/core';
 import { ProductService } from './services/product.service';
 import { RegisterService } from './services/register.service';
-
-import { AuthenticationService } from './services/authentication.service';
-import { AlertService } from './services/alert.service';
+import { LoginService } from './services/login.service';
+import { OutletService } from './services/outlet.service';
 @Component({
   selector: 'pm-root',
   templateUrl:'./app.component.html',
@@ -11,7 +10,7 @@ import { AlertService } from './services/alert.service';
 
 
   ,
-  providers:[ ProductService ,RegisterService,AuthenticationService,AlertService]
+  providers:[ ProductService ,RegisterService,LoginService,OutletService]
   
 })
 export class AppComponent{

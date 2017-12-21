@@ -1,0 +1,54 @@
+<link rel="stylesheet" href="https://bootswatch.com/3/cyborg/bootstrap.min.css">
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    {{pageTitle}}
+  </div>
+  <div class="panel-body">
+    <div class="row">
+
+    </div>
+
+
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+        <tr>
+
+          <th>Id</th>
+          <th>Name</th>
+          <th>ContactNo</th>
+          <th>Barcode</th>
+          <th>Longitude</th>
+          <th>Latitude</th>
+          <th>OwnerName</th>
+          <th>Email</th>
+          <th>Status</th>
+          <th>RouteId</th>
+          <th>&nbsp;</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let outlet of outlets">
+          <td>{{outlet.Id}}</td>
+          <td>{{outlet.Name}}</td>
+          <td>{{outlet.ContactNo}}</td>
+          <td>{{outlet.Barcode}}</td>
+          <td>{{outlet.Longitude}}</td>
+          <td>{{outlet.Latitude}}</td>
+          <td>{{outlet.OwnerName}}</td>
+          <td>{{outlet.Email}}</td>
+          <td>{{outlet.Status}}</td>
+          <td>{{outlet.RouteId}}</td>
+
+        <td><button class="btn btn-info"><i class="fa fa-edit">edit</i></button>
+          <button class="btn btn-danger"><i class="fa fa-minus"></i></button>
+          
+        </td>
+        </tr>
+        </tbody>
+
+      </table>
+<button class="btn btn-success">Add New Outlet<i class="fa fa-plus"></i></button>
+    <br/>
+    <br/>

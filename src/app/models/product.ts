@@ -7,7 +7,8 @@ export interface IProduct{
   Category: string;
   ManufacturePrice: number;
   RetailPrice: number;
-  Quatity: number;
+  Quantity: number;
+  DiscountType:string;
 }
 
 
