@@ -12,21 +12,37 @@ export class ProductListComponent implements OnInit {
   pageTitle= 'Product List';
 
   errorMessage: string;
-  private products: IProduct[];
+  products: IProduct[];
   productForm:boolean=false;
  editProductForm:boolean=false;
   isNewForm:boolean;
   newProduct:any={};
   editedProduct:any={};
+_listFilter:string;
 
-  constructor(private _productService: ProductService) {
-    this._productService.getProducts()
-      .subscribe(res => { this.products = res; },
-        error => this.errorMessage = <any>error);
+get listFilter():string{
+return this._listFilter;
+}
+
+set listFilter(value:string){
+  this._listFilter=value;
+  this.filteredProducts=this.listFilter?this.performFilter(this.listFilter):this.products;
+}
+filteredProducts:IProduct[];
+
+
+  constructor(private _productService: ProductService) {}
+    
+    
       
-  }
+  
 
-
+  performFilter(filterBy:string):IProduct[]{
+    
+      filterBy=filterBy.toLocaleLowerCase();
+      return this.products.filter((product:IProduct)=>
+    product.Name.toLocaleLowerCase().indexOf(filterBy)!==-1);
+    }
  
 
 
@@ -92,6 +108,10 @@ cancelEdits()
 
   ngOnInit(): void {
 
-
+    this._productService.getProducts()
+    .subscribe(res => { this.products = res;
+      this.filteredProducts = this.products;
+    },
+      error => this.errorMessage = <any>error);
   }
 }

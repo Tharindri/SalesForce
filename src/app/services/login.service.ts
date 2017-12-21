@@ -14,10 +14,10 @@ export class LoginService {
     private userUrl= 'http://salesforcenew20171220054329.azurewebsites.net/swagger/ui/index#!/Login/Login_GetByUsernameAndPassword';
     constructor(private http: HttpClient) { }
 
-    loginUser(loginData:User):Observable<any>{
+    loginUser(loginData:User){
         
-        return this.http.post(this.userUrl,loginData).map(
-            (response)=>response.json()
+        return this.http.post<any>(this.userUrl,loginData).subscribe(
+            response=>response.json()
         )
            // .do(data => console.log('All: ' + JSON.stringify(data)))
         }
