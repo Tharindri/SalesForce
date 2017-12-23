@@ -5,19 +5,34 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 
-import { IProduct } from '../modules/product';
-
+import { IProduct } from '../models/product';
 
 
 @Injectable()
 export class ProductService {
-  private _productUrl= 'http://salesforce20171123104055.azurewebsites.net/api/Product';
+  products: any[] = [];
+
+  private _productUrl= 'http://salesforcenew20171220054329.azurewebsites.net/api/Product';
   constructor(private _http: HttpClient) { }
   getProducts(): Observable<any> {
     return this._http.get<IProduct>(this._productUrl)
       .do(data => console.log('All: ' + JSON.stringify(data)))
       .catch(this.handleError);
   }
+  addProduct(product:IProduct)
+  {
+    console.log(product);
+    return this._http.post<IProduct>(this._productUrl, product);
+
+  }
+
+  updateProduct(product:IProduct)
+  {
+    console.log(product);
+    return this._http.put<IProduct>(this._productUrl,product);
+  }
+
+
 
   private handleError(err: HttpErrorResponse){
     console.log('error prd');
