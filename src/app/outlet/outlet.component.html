@@ -14,7 +14,7 @@
       <table class="table">
         <thead>
         <tr>
-
+          <button routerLink="/sidekicks">Go to sidekicks</button>
           <th>Id</th>
           <th>Name</th>
           <th>ContactNo</th>
@@ -41,14 +41,69 @@
           <td>{{outlet.Status}}</td>
           <td>{{outlet.RouteId}}</td>
 
-        <td><button class="btn btn-info"><i class="fa fa-edit">edit</i></button>
-          <button class="btn btn-danger"><i class="fa fa-minus"></i></button>
+        <td><button class="btn btn-primary" (click)="showEditOutletForm(outlet)"><i class="fa fa-edit">Edit</i></button>
+          <button class="btn btn-success" (click)="removeOutlet(outlet)"><i class="fa fa-minus">Delete</i></button>
           
         </td>
         </tr>
         </tbody>
 
       </table>
-<button class="btn btn-success">Add New Outlet<i class="fa fa-plus"></i></button>
+<button class="btn btn-success"(click)="showAddOutletForm()">Add New Outlet<i class="fa fa-plus"></i></button>
     <br/>
     <br/>
+
+
+
+
+    <form *ngIf="outletForm">
+      <h4>Add New Outlet</h4>
+  
+  <p>Id : <input type="text" name="Id" [(ngModel)]="newOutlet.Id"/></p>  
+  <p>Name : <input type="text" name="Name" [(ngModel)]="newOutlet.Name"/></p>
+  <p>ContactNo : <input type="text" name="ContactNo" [(ngModel)]="newOutlet.ContactNo"/></p>
+  <p>Barcode : <input type="text" name="Barcode" [(ngModel)]="newOutlet.Barcode"/></p>
+  <p>Longitude : <input type="text" name="Longitude" [(ngModel)]="newOutlet.Longitude"/></p>
+  <p>Latitude : <input type="text" name="Latitude" [(ngModel)]="newOutlet.Latitude"/></p>
+  <p>OwnerName : <input type="text" name="OwnerName" [(ngModel)]="newOutlet.OwnerName"/></p>
+  <p>Email : <input type="text" name="Email" [(ngModel)]="newOutlet.Email"/></p>
+  <p>Status : <input type="text" name="Status" [(ngModel)]="newOutlet.Status"/></p>
+  <p>RouteId : <input type="text" name="RouteId" [(ngModel)]="newOutlet.RouteId"/></p>
+  <p>
+    <button type="button" class="btn btn-success" (click)="saveOutlet(newOutlet)">Submit</button>
+    <button type="button" class="btn btn-warning">Cancel</button>
+    
+  </p>
+  
+  
+    </form>
+  
+  
+  
+    <form *ngIf="editOutletForm">
+      <h2>Edit Outlet Details</h2>
+  
+      <p>Id : <input type="text" name="Id" [(ngModel)]="editedOutlet.Id"/></p>  
+      <p>Name : <input type="text" name="Name" [(ngModel)]="editedOutlet.Name"/></p>
+      <p>ContactNo : <input type="text" name="ContactNo" [(ngModel)]="editedOutlet.ContactNo"/></p>
+      <p>Barcode : <input type="text" name="Barcode" [(ngModel)]="editedOutlet.Barcode"/></p>
+      <p>Longitude : <input type="text" name="Longitude" [(ngModel)]="editedOutlet.Longitude"/></p>
+      <p>Latitude : <input type="text" name="Latitude" [(ngModel)]="editedOutlet.Latitude"/></p>
+      <p>OwnerName : <input type="text" name="OwnerName" [(ngModel)]="editedOutlet.OwnerName"/></p>
+      <p>Email : <input type="text" name="Email" [(ngModel)]="editedOutlet.Email"/></p>
+      <p>Status : <input type="text" name="Status" [(ngModel)]="editedOutlet.Status"/></p>
+      <p>RouteId : <input type="text" name="RouteId" [(ngModel)]="editedOutlet.RouteId"/></p>
+  
+  <p>
+    <button type="button" class="btn btn-primary" (click)="updateOutlet(editedOutlet)">Submit</button>
+    <button type="button" class="btn btn-warning" (click)="cancelEdits()">Cancel</button>
+    
+  </p>
+  
+  
+    </form>
+  
+      </div>
+    </div>
+  
+  

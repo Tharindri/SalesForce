@@ -19,7 +19,24 @@ export class OutletService {
       .do(data => console.log('All: ' + JSON.stringify(data)))
       .catch(this.handleError);
   }
+  addOutlet(outlet:Outlet)
+  {
+    console.log(outlet);
+    return this._http.post<Outlet>(this.OutletUrl, outlet);
 
+  }
+
+  updateOutlet(outlet:Outlet)
+  {
+    console.log(outlet);
+    return this._http.put<Outlet>(this.OutletUrl,outlet);
+  }
+
+  deleteOutlet(outlet:Outlet)
+  {
+    console.log(outlet);
+    return this._http.delete<Outlet>(this.OutletUrl);
+  }
   private handleError(err: HttpErrorResponse){
     console.log('error in outlet service');
     console.log(err.message);

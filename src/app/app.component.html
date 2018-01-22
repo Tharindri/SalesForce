@@ -4,21 +4,68 @@
   <nav class='navbar navbar-default'>
     <div class='container-fluid'>
       <a class='navbar-brand'> {{pageTitle}} </a>
-      <ul class='nav navbar-nav'>
+      
+          <ul class='nav navbar-nav'>
         <li><a [routerLink]="['./welcome']">Home</a></li>
         <li><a [routerLink]="['./products']">Products</a></li>
         <li><a [routerLink]="['./outlet']">Outlets</a></li>
         
         
         
-      </ul>  
+      </ul> 
+      
         <ul class="nav navbar-nav navbar-right">
           <li><a [routerLink]="['./register']">Register</a></li>
           <li><a [routerLink]="['./login']">Login</a></li>
       </ul>
     </div>
   </nav>
+  
+
+
+
+    <!--
+              <ul class="nav sidebar-nav">
+                  <li class="sidebar-brand">
+                      <a href="#">
+                         Brand
+                      </a>
+                  </li>
+                  <li>
+                      <a href="#">Home</a>
+                  </li>
+                  <li>
+                      <a href="#">About</a>
+                  </li>
+                  <li>
+                      <a href="#">Events</a>
+                  </li>
+                  <li>
+                      <a href="#">Team</a>
+                  </li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-
+    toggle="dropdown">Works <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Clients</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                      <a href="#">Services</a>
+                  </li>
+                  <li>
+                      <a href="#">Contact</a>
+                  </li>
+              </ul>
+          
+
+!-->
+
   <div class="container">
+
     <router-outlet></router-outlet>
 
   </div>

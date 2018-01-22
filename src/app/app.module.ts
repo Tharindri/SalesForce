@@ -29,6 +29,8 @@ import { OutletComponent } from './outlet/outlet.component';
     HttpClientModule,
     RouterModule.forRoot([
       {path: 'products', component: ProductListComponent},
+      //{ path: 'product/:Id', component: ProductListComponent },
+
       {path: 'register', component: RegisterComponent},
       {path: 'login', component: LoginComponent},
       {path: 'welcome', component: WelcomeComponent},
@@ -36,8 +38,12 @@ import { OutletComponent } from './outlet/outlet.component';
       
       {path: '', redirectTo: 'welcome', pathMatch: 'full'},
       {path: '**', redirectTo: 'welcome', pathMatch: 'full'},
-    ])
+    ]),
+    //RouterModule.forChild([
+      //{path: 'products', component: ProductListComponent},
+    //])
   ],
+  
   providers: [],
   bootstrap: [AppComponent]
 })

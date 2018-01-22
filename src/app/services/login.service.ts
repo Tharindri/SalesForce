@@ -17,10 +17,14 @@ export class LoginService {
     loginUser(loginData: RegisteredUser): Observable<any> {
 
         return this.http.get<any>(this.userUrl + '?Username=' + loginData.Username + '&password=' + loginData.password)
-          .do(response => JSON.stringify(response))
+          .do(response => JSON.stringify(response)
+        
+        )
           .catch(this.handleError);
            // .do(data => console.log('All: ' + JSON.stringify(data)))
-    }
+          //localStorage.setItem('token',response.json().token);
+    
+          }
 
     private handleError(err: HttpErrorResponse){
       console.log('error in login');

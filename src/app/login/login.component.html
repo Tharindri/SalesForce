@@ -1,14 +1,14 @@
 <link rel="stylesheet" href="https://bootswatch.com/3/superhero/bootstrap.min.css">
 
-
+<body background="./assets/images2.jpg">
     <h3>Login</h3>
 
   <form class="form-horizontal">
-    <fieldset><br><br>
+    <fieldset ><br><br>
 
       <div class="form-group">
         <label for="inputUsername" class="col-lg-2 control-label">Username</label>
-        <div class="col-lg-5">
+        <div class="col-lg-4">
           <input type="text" class="form-control" id="inputUsername" [(ngModel)]="loginData.Username" name="Username" placeholder="Username">
         </div>
       </div>
@@ -16,7 +16,7 @@
 
       <div class="form-group">
         <label for="inputPassword" class="col-lg-2 control-label">Password</label>
-        <div class="col-lg-5">
+        <div class="col-lg-4">
           <input type="password" class="form-control" id="inputPassword" [(ngModel)]="loginData.password" name="password" placeholder="password">
       </div>
       </div>
@@ -26,13 +26,14 @@
       <div class="form-group">
         <div class="col-lg-10 col-lg-offset-2">
           <button type="reset" class="btn btn-default">Cancel</button>
-          <button type="submit" class="btn btn-primary" (click)="post()">Submit</button>
+          <button type="submit" class="btn btn-primary" (click)="post()">Login</button>
           
         </div>
       </div>
+      <br><br>
     </fieldset>
   </form>
-
+</body>
 <!--
 <div class="col-md-6 col-md-offset-3">
   <h2>Login</h2>
