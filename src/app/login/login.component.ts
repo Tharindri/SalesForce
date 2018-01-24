@@ -21,7 +21,7 @@ export class LoginComponent  {
    this.loginService.loginUser(this.loginData)
      .subscribe(res => {console.log(res);
 
-      //localStorage.setItem('token',res.json().token);
+      
       
      // todo return to home page
        if (res.status == 'Fail' || res.status == 'No Username'){
@@ -31,13 +31,14 @@ export class LoginComponent  {
        else {
          alert('Successful');
          if(res.UserType=='SalesRep')
-         {this.router.navigate(['/products']);
-         this.router.navigate(['/outlet']);
+         {
+           this.router.navigate(['/dashboard']);
+         
          }
          else if(res.UserType=='Admin')
-
+         {
          this.router.navigate(['/register']);
-
+         }
        }
        },
          error => this.errorMessage = <any>error);

@@ -1,0 +1,30 @@
+<div class="table-responsive">
+    <table class="table">
+      <thead>
+      <tr>
+  
+        <th>Id</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th></th>
+        
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let route of routes">
+        <td>{{route.Id}}</td>
+        <td>{{route.Name}}</td>
+      
+          <td>{{route.Description}}</td>
+      
+  
+        
+        <td><a [routerLink]="['/routes',route.Id]"><button (click)="showEditRouteForm(route)">Edit</button></a></td>
+      
+      
+       
+      </tr>
+      </tbody>
+  
+    </table>
+    </div>

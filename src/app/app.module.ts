@@ -6,12 +6,19 @@ import { HttpModule } from '@angular/http';
 
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
+import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
+
 
 import { ProductListComponent } from './products/product-list.component';
 import { WelcomeComponent } from './home/welcome.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { OutletComponent } from './outlet/outlet.component';
+import { UsersComponent } from './users/users.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { RouteComponent } from './route/route.component';
+import { RouteDetailComponent } from './route-detail/route-detail.component';
 
 @NgModule({
   declarations: [
@@ -20,28 +27,38 @@ import { OutletComponent } from './outlet/outlet.component';
     WelcomeComponent,
     LoginComponent,
     RegisterComponent,
-    OutletComponent
+    OutletComponent,
+    UsersComponent,
+    UserDetailComponent,
+    DashboardComponent,
+    RouteComponent,
+    RouteDetailComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     HttpClientModule,
+    BsDatepickerModule.forRoot(),
     RouterModule.forRoot([
-      {path: 'products', component: ProductListComponent},
-      //{ path: 'product/:Id', component: ProductListComponent },
-
-      {path: 'register', component: RegisterComponent},
-      {path: 'login', component: LoginComponent},
       {path: 'welcome', component: WelcomeComponent},
-      {path: 'outlet', component: OutletComponent},
+      {path: 'products', component: ProductListComponent},
+      { path: 'routes/:id', component: RouteDetailComponent },
       
+      { path: 'routes', component: RouteComponent },
+
+       {path: 'outlet', component: OutletComponent},
+       {path: 'users/:id', component: UserDetailComponent},
+      {path: 'users', component: UsersComponent},
+      
+     {path: 'register', component: RegisterComponent},
+     {path: 'login', component: LoginComponent},
       {path: '', redirectTo: 'welcome', pathMatch: 'full'},
       {path: '**', redirectTo: 'welcome', pathMatch: 'full'},
     ]),
-    //RouterModule.forChild([
-      //{path: 'products', component: ProductListComponent},
-    //])
+    RouterModule.forChild([
+      {path: 'dashboard', component: DashboardComponent},
+    ])
   ],
   
   providers: [],

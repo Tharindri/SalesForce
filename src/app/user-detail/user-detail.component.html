@@ -1,0 +1,128 @@
+<link rel="stylesheet" href="https://bootswatch.com/3/cyborg/bootstrap.min.css">
+
+<!--
+<div class='panel panel-primary' *ngIf='user'>
+    <div class='panel-heading'>
+        <div class='panel-body'>
+
+  <div *ngIf="user">
+    <h4>{{ user.Username}} </h4>
+    <div><span>id: </span>{{user.Id}}</div>
+    <div>
+      <div>Username:
+        {{user.Username}}
+      </div>
+      
+      <div>FirstName:
+          {{user.FirstName}}
+      </div>
+        
+      <div>LastName:
+            {{user.LastName}}
+      </div>
+          
+      <div>ResidenceNo:
+              {{user.ResidenceNo}}
+      </div>
+            
+      <div>Lane:
+          {{user.Lane}}
+        </div>
+        
+        <div>City:
+            {{user.City}}
+          </div>
+          
+          <div>ContactNo:
+              {{user.ContactNo}}
+            </div>
+
+            <div>Email:
+                {{user.Email}}
+              </div>
+                  
+              <div>Gender:
+                  {{user.Gender}}
+                </div>
+                
+    </div>
+!-->
+    <td><button class="btn btn-primary" (click)="showEditUserForm(user)" ><i class="fa fa-edit">Edit</i></button>
+      <button class="btn btn-success"><i class="fa fa-minus">Delete</i></button>
+      
+    </td>
+
+
+
+
+
+
+
+
+<div class="panel panel-primary" *ngIf='editUserForm'>
+    <div class='panel-heading'>
+        <div class='panel-body'>
+<div *ngIf="user">
+    <h4>{{ editedUser.Username}} </h4>
+    <div><span>id: </span>{{editedUser.Id}}</div>
+    <div>
+      <div>Username:
+        <input type="text" name="Username" [(ngModel)]="editedUser.Username" />
+      </div>
+      
+      <div>FirstName:
+          <input type="text" name="FirstName"[(ngModel)]="editedUser.FirstName"/>
+      </div>
+        
+      <div>LastName:
+            <input [(ngModel)]="editedUser.LastName" placeholder="LastName"/>
+      </div>
+          
+      <div>ResidenceNo:
+              <input [(ngModel)]="editedUser.ResidenceNo" placeholder="ResidenceNo"/>
+      </div>
+            
+      <div>Lane:
+          <input [(ngModel)]="editedUser.Lane" placeholder="Lane"/>
+        </div>
+        
+        <div>City:
+            <input [(ngModel)]="editedUser.City" placeholder="City"/>
+          </div>
+          
+          <div>ContactNo:
+              <input [(ngModel)]="editedUser.ContactNo" placeholder="ContactNo"/>
+            </div>
+
+            <div>Email:
+                <input [(ngModel)]="editedUser.Email" placeholder="Email"/>
+              </div>
+                  
+              <div>Gender:
+                  <input [(ngModel)]="editedUser.Gender" placeholder="Gender"/>
+                </div>
+
+          <div>
+            <input id="date" type="text" bsDatepicker>
+          </div>
+                
+                
+    </div>
+
+  </div>
+        </div>
+
+        <p>
+            <button type="button" class="btn btn-primary" (click)="updateUser(editedUser)">Submit</button>
+            <button type="button" class="btn btn-warning" (click)="cancelEdits()">Cancel</button>
+            
+          </p>
+
+</div>
+</div>
+<div class='panel-footer'>
+    <a class='btn btn-default' (click)='onBack()'>
+        <button> <h5>Back </h5></button>
+    </a>
+</div>
+

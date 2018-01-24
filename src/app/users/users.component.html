@@ -1,0 +1,70 @@
+<link rel="stylesheet" href="https://bootswatch.com/3/cyborg/bootstrap.min.css">
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    
+  </div>
+
+  <div class="panel-body">
+    <div class='row'>
+
+        <div class='col-md-2'>
+            
+          </div>
+          <div class='col-md-4'>
+              
+          </div>
+      </div>
+    <div class="row">
+        <div class='col-md-6'>
+           
+        </div>
+    </div>
+
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+    <tr>
+
+      <th>Id</th>
+      <th>NIC</th>
+      <th>UserName</th>
+      <th>FirstName</th>
+      <th>LastName</th>
+      <th>ResidenceNo</th>
+      <th>Lane</th>
+      <th>City</th>
+      <th>ContactNo</th>
+      <th>Email</th>
+      <th>Gender</th>
+      <th>&nbsp;</th>
+      
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{user.Id}}</td>
+      <td>{{user.NIC}}</td>
+    
+        <td>{{user.Username}}</td>
+    
+        <!--<td>{{user.Username}}</td>!-->
+      <td>{{user.FirstName}}</td>
+      <td>{{user.LastName}}</td>
+      <td>{{user.ResidenceNo}}</td>
+      <td>{{user.Lane}}</td>
+      <td>{{user.City}}</td>
+      <td>{{user.ContactNo}}</td>
+      <td>{{user.Email}}</td>
+      <td>{{user.Gender}}</td>
+      <td><a [routerLink]="['/users',user.Id]"><button (click)="showEditUserForm(user)">Edit</button></a></td>
+    
+    
+     
+    </tr>
+    </tbody>
+
+  </table>
+</div>
+</div>
+</div>

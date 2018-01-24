@@ -12,7 +12,7 @@ import { Outlet } from '../models/outlet';
 export class OutletService {
   outlets: any[] ;
 
-  private OutletUrl= 'http://salesforcenew20171220054329.azurewebsites.net/api/Outlets';
+  private OutletUrl= 'http://salesforcenew20180122090327.azurewebsites.net/api/Outlets';
   constructor(private _http: HttpClient) { }
   getOutlets(): Observable<any> {
     return this._http.get<Outlet>(this.OutletUrl)

@@ -3,6 +3,9 @@ import { ProductService } from './services/product.service';
 import { RegisterService } from './services/register.service';
 import { LoginService } from './services/login.service';
 import { OutletService } from './services/outlet.service';
+import { UserService } from './services/user.service';
+import { RouteService } from './services/route.service';
+
 @Component({
   selector: 'pm-root',
   templateUrl:'./app.component.html',
@@ -10,7 +13,7 @@ import { OutletService } from './services/outlet.service';
 
 
   ,
-  providers:[ ProductService ,RegisterService,LoginService,OutletService]
+  providers:[ ProductService ,RegisterService,LoginService,OutletService,UserService,RouteService]
   
 })
 export class AppComponent{

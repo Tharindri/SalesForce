@@ -11,7 +11,7 @@ import {RegisteredUser} from '../models/registereduser';
 
 @Injectable()
 export class LoginService {
-    private userUrl= 'http://salesforcenew20171220054329.azurewebsites.net/api/Login';
+    private userUrl= 'http://salesforcenew20180122090327.azurewebsites.net/api/Login';
     constructor(private http: HttpClient) { }
 
     loginUser(loginData: RegisteredUser): Observable<any> {

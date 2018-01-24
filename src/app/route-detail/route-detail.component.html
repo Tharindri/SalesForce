@@ -1,0 +1,57 @@
+<td><button class="btn btn-primary" (click)="showEditRouteForm(route)" ><i class="fa fa-edit">Edit</i></button>
+  <button class="btn btn-success"><i class="fa fa-minus">Delete</i></button>
+  
+</td>
+
+
+<div class="panel panel-primary" *ngIf='editRouteForm'>
+    
+        <div class='panel-body'>
+<div *ngIf="route">
+    
+    <h4>{{ editedRoute.Name}} </h4>
+    <div><span>id: </span>{{editedRoute.Id}}</div>
+    <div>
+      <div>Id:
+        <input type="text" name="Id" [(ngModel)]="editedRoute.Id" />
+      </div>
+      
+      <div>Name:
+          <input type="text" name="Name"[(ngModel)]="editedRoute.Name"/>
+      </div>
+        
+      <div>Description:
+            <input [(ngModel)]="editedRoute.Description"/>
+      </div>
+          
+      
+      <div>
+            <input id="date" type="text" bsDatepicker>
+      </div>
+                
+                
+    </div>
+
+  </div>
+</div>
+        
+
+          <p>
+            <button type="button" class="btn btn-primary" (click)="updateRoute(editedRoute)">Submit</button>
+            <button type="button" class="btn btn-warning" (click)="cancelEdits()">Cancel</button>
+            
+          </p>
+
+
+
+
+
+
+
+
+
+<div class='panel-footer'>
+    <a class='btn btn-default' (click)='onBack()'>
+        <button> <h5>Back </h5></button>
+    </a>
+  </div>

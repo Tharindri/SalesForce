@@ -5,37 +5,35 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 
-import { IProduct } from '../models/product';
-
+import { User } from '../models/user';
 
 @Injectable()
-export class ProductService {
+export class UserService {
   products: any[] = [];
 
-  private _productUrl= 'http://salesforcenew20180122090327.azurewebsites.net/api/Product';
+  private userUrl= 'http://salesforcenew20180122090327.azurewebsites.net/api/Users';
   constructor(private _http: HttpClient) { }
-  getProducts(): Observable<any> {
-    return this._http.get<IProduct>(this._productUrl)
+  getUsers(): Observable<any> {
+    return this._http.get<User>(this.userUrl)
       .do(data => console.log('All: ' + JSON.stringify(data)))
       .catch(this.handleError);
   }
-  addProduct(product:IProduct)
-  {
-    console.log(product);
-    return this._http.post<IProduct>(this._productUrl, product);
 
-  }
+  getUser(Id: number): Observable<User> {
+    return this.getUsers()
+        .map((users: User[]) => users.find(p => p.Id === Id));
+}
 
-  updateProduct(product:IProduct)
-  {
-    console.log(product);
-    return this._http.put<IProduct>(this._productUrl,product);
-  }
 
+updateUser(user:User)
+{
+  console.log(user);
+  return this._http.put<User>(this.userUrl,user);
+}
 
 
   private handleError(err: HttpErrorResponse){
-    console.log('error prd');
+    
     console.log(err.message);
     return Observable.throw(err.message);
   }
