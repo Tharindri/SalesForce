@@ -1,25 +1,5 @@
 <link rel="stylesheet" href="https://bootswatch.com/3/cyborg/bootstrap.min.css">
 
-<div class="panel panel-primary">
-  <div class="panel-heading">
-    
-  </div>
-
-  <div class="panel-body">
-    <div class='row'>
-
-        <div class='col-md-2'>
-            
-          </div>
-          <div class='col-md-4'>
-              
-          </div>
-      </div>
-    <div class="row">
-        <div class='col-md-6'>
-           
-        </div>
-    </div>
 
 <div class="table-responsive">
   <table class="table">
@@ -37,6 +17,8 @@
       <th>ContactNo</th>
       <th>Email</th>
       <th>Gender</th>
+      <th>UserType</th>
+      
       <th>&nbsp;</th>
       
     </tr>
@@ -48,7 +30,7 @@
     
         <td>{{user.Username}}</td>
     
-        <!--<td>{{user.Username}}</td>!-->
+      
       <td>{{user.FirstName}}</td>
       <td>{{user.LastName}}</td>
       <td>{{user.ResidenceNo}}</td>
@@ -57,6 +39,9 @@
       <td>{{user.ContactNo}}</td>
       <td>{{user.Email}}</td>
       <td>{{user.Gender}}</td>
+      <td>{{user.UserType}}</td>
+      
+
       <td><a [routerLink]="['/users',user.Id]"><button (click)="showEditUserForm(user)">Edit</button></a></td>
     
     
@@ -65,6 +50,36 @@
     </tbody>
 
   </table>
+
+  <button class="btn btn-success"(click)="showAddUserForm()">Add New User<i class="fa fa-plus"></i></button>
+  <br/>
+  <br/>
 </div>
-</div>
+
+
+<div>
+<form *ngIf="userForm">
+  <h4>Add New User</h4>
+
+  <p>Id : <input type="text" name="Id" [(ngModel)]="newUser.Id"/></p>  
+  <p>NIC : <input type="text" name="NIC" [(ngModel)]="newUser.NIC"/></p>
+  <p>Username : <input type="text" name="Username" [(ngModel)]="newUser.Username"/></p>
+  <p>FirstName : <input type="text" name="FirstName" [(ngModel)]="newUser.FirstName"/></p> 
+  <p>LastName : <input type="text" name="LastName" [(ngModel)]="newUser.LastName"/></p> 
+  <p>ResidenceNo : <input type="text" name="ResidenceNo" [(ngModel)]="newUser.ResidenceNo"/></p> 
+  <p>Lane : <input type="text" name="Lane" [(ngModel)]="newUser.Lane"/></p> 
+  <p>City : <input type="text" name="City" [(ngModel)]="newUser.City"/></p> 
+  <p>ContactNo : <input type="text" name="ContactNo" [(ngModel)]="newUser.ContactNo"/></p> 
+  <p>Email : <input type="text" name="Email" [(ngModel)]="newUser.Email"/></p> 
+  <p>Gender : <input type="text" name="Gender" [(ngModel)]="newUser.Gender"/></p> 
+ 
+<p>
+<button type="button" class="btn btn-success" (click)="saveUser(newUser)">Submit</button>
+<button type="button" class="btn btn-warning">Cancel</button>
+
+</p>
+
+
+</form>
+
 </div>

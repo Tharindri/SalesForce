@@ -2,11 +2,11 @@
 <body background="./assets/images2.jpg">
   <h3>Register</h3>
 <form class="form-horizontal">
-    
+
   <fieldset><br><br>
 
-      
-      
+
+
 
 
       <div class="form-group">
@@ -23,30 +23,30 @@
         <input type="text" class="form-control" id="inputUsername" [(ngModel)]="registerData.Username" name="Username" placeholder="Username">
         </div>
         </div>
-      
+
         <div class="form-group">
           <label for="inputEmail" class="col-lg-2 control-label">Email</label>
           <div class="col-lg-5">
             <input type="text" class="form-control" id="inputEmail" [(ngModel)]="registerData.Email" name="Email" placeholder="Email">
           </div>
         </div>
-  
-  
+
+
       <div class="form-group">
         <label for="inputPassword" class="col-lg-2 control-label">Password</label>
         <div class="col-lg-5">
           <input type="password" class="form-control" id="inputPassword" [(ngModel)]="registerData.Passwords" name="password" placeholder="Password">
       </div>
       </div>
-      
+
       <div class="form-group">
         <label for="inputFirstName" class="col-lg-2 control-label">First Name</label>
         <div class="col-lg-5">
         <input type="text" class="form-control" id="inputFirstName" [(ngModel)]="registerData.FirstName" name="FirstName" placeholder="First Name">
         </div>
         </div>
-        
-        
+
+
         <div class="form-group">
           <label for="inputLastName" class="col-lg-2 control-label">Last Name</label>
           <div class="col-lg-5">
@@ -66,7 +66,7 @@
           <div class="col-lg-5">
           <input type="text" class="form-control" id="inputLane" [(ngModel)]="registerData.Lane" name="Lane" placeholder="Lane">
         </div>
-        </div> 
+        </div>
 
         <div class="form-group">
           <label for="inputCity" class="col-lg-2 control-label">City
@@ -74,18 +74,43 @@
           <div class="col-lg-5">
           <input type="text" class="form-control" id="inputCity" [(ngModel)]="registerData.City" name="City" placeholder="City">
         </div>
-        </div> 
+        </div>
 
         <div class="form-group">
         <label for="inputContactNo" class="col-lg-2 control-label">ContactNo</label>
         <div class="col-lg-5">
         <input type="text" class="form-control" id="inputContactNo" [(ngModel)]="registerData.ContactNo" name="ContactNo" placeholder="ContactNo">
       </div>
-      </div> 
-     
+      </div>
+
       
 
+        
+            <div class="form-group">
+            <label for="inputUserType" class="col-lg-2 control-label">User Type</label>
+            <div class="col-lg-5">
+            <select class="form-control col-lg-2" [(ngModel)]="registerData.UserType" name="UserType" >
+                <option>Admin</option>
+                <option>Sales</option>
+                <option>HR</option>
+                <option>Finance</option>
 
+            </select>
+          </div>
+        </div>
+
+        
+        <div class="form-group">
+            <label for="inputGender" class="col-lg-2 control-label">Gender</label>
+            <div class="col-lg-5">
+            <select class="form-control col-lg-2" [(ngModel)]="registerData.Gender" name="Gender" >
+                <option>Male</option>
+                <option>Female</option>
+                
+
+            </select>
+          </div>
+        </div>
       <div class="form-group">
         <div class="col-lg-10 col-lg-offset-2">
           <button type="reset" class="btn btn-default">Cancel</button>

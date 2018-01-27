@@ -1,47 +1,61 @@
+<link rel="stylesheet" href="https://bootswatch.com/3/darkly/bootstrap.min.css">
 <td><button class="btn btn-primary" (click)="showEditRouteForm(route)" ><i class="fa fa-edit">Edit</i></button>
   <button class="btn btn-success"><i class="fa fa-minus">Delete</i></button>
-  
 </td>
 
 
 <div class="panel panel-primary" *ngIf='editRouteForm'>
-    
-        <div class='panel-body'>
+<div class="panel-heading">
+          <div class='panel-body'>
 <div *ngIf="route">
-    
+
     <h4>{{ editedRoute.Name}} </h4>
-    <div><span>id: </span>{{editedRoute.Id}}</div>
+    
     <div>
       <div>Id:
         <input type="text" name="Id" [(ngModel)]="editedRoute.Id" />
       </div>
-      
+
+      <br/>
+
       <div>Name:
           <input type="text" name="Name"[(ngModel)]="editedRoute.Name"/>
       </div>
-        
+      <br/>
+
       <div>Description:
-            <input [(ngModel)]="editedRoute.Description"/>
+            <input type="text" id="Description" name="Description" [(ngModel)]="editedRoute.Description" placeholder="Description"/>
       </div>
-          
-      
+      <br/>
+
       <div>
             <input id="date" type="text" bsDatepicker>
       </div>
-                
-                
+      <br/>
+      <br/>
+
     </div>
 
   </div>
-</div>
-        
+  </div>
+  
+
+
 
           <p>
-            <button type="button" class="btn btn-primary" (click)="updateRoute(editedRoute)">Submit</button>
+            <button type="button" class="btn btn-info" (click)="updateRoute(editedRoute)">Submit</button>
             <button type="button" class="btn btn-warning" (click)="cancelEdits()">Cancel</button>
-            
+
           </p>
 
+        </div>
+      </div>
+      <div class='panel-footer'>
+          <a class='btn btn-primary' (click)='onBack()'>
+              <button> <h5>Back </h5></button>
+          </a>
+      </div>
+      
 
 
 
@@ -49,9 +63,3 @@
 
 
 
-
-<div class='panel-footer'>
-    <a class='btn btn-default' (click)='onBack()'>
-        <button> <h5>Back </h5></button>
-    </a>
-  </div>

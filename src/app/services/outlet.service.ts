@@ -12,7 +12,7 @@ import { Outlet } from '../models/outlet';
 export class OutletService {
   outlets: any[] ;
 
-  private OutletUrl= 'http://salesforcenew20180122090327.azurewebsites.net/api/Outlets';
+  private OutletUrl= 'http://salesforcenew20180126044103.azurewebsites.net/api/Outlets';
   constructor(private _http: HttpClient) { }
   getOutlets(): Observable<any> {
     return this._http.get<Outlet>(this.OutletUrl)
@@ -26,16 +26,16 @@ export class OutletService {
 
   }
 
-  updateOutlet(outlet:Outlet)
+  updateOutlet(Id:number,outlet:Outlet)
   {
     console.log(outlet);
-    return this._http.put<Outlet>(this.OutletUrl,outlet);
+    return this._http.put('http://salesforcenew20180126044103.azurewebsites.net/api/Outlets/'+Id,this.outlets);
   }
 
-  deleteOutlet(outlet:Outlet)
+  deleteOutlet(Id:number,outlet:Outlet)
   {
     console.log(outlet);
-    return this._http.delete<Outlet>(this.OutletUrl);
+    return this._http.delete('http://salesforcenew20180126044103.azurewebsites.net/api/Outlets/'+Id);
   }
   private handleError(err: HttpErrorResponse){
     console.log('error in outlet service');

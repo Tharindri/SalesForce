@@ -9,6 +9,11 @@ import { User } from '../models/user';
 export class UsersComponent implements OnInit {
   errorMessage: string;
   users: User[];
+  newUser:any={};
+  userForm:boolean=false;
+  isNewForm:boolean;
+  editUserForm:boolean=false;
+  editedUser:any={};
   constructor(private userService:UserService) { }
 
   ngOnInit() {
@@ -20,6 +25,44 @@ export class UsersComponent implements OnInit {
   }
 
 
+  showAddUserForm()
+  {
+    if(this.users.length)
+    {
+      this.newUser={};
+    }
+    this.userForm=true;
+    this.isNewForm=true;
+    
+  }
+  showEditUserForm(user:User)
+  {
+  if(!user){
+    this.userForm=false;
+    return;
+  }
+  this.editUserForm=true;
+  //this.isNewForm=false;
+  this.editedUser=user;
+  console.log(user);
+  }
+  
+  
+  saveUser(user:User)
+  {
+    if(this.isNewForm)
+    {
+      this.users.push(user);
+  this.userService.addUser(user)
+      .subscribe(user => {
+      
+    
+  });
+  
+    }
+    
+    this.userForm=false;
+  }
   
 
 }

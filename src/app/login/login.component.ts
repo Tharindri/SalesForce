@@ -11,7 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class LoginComponent  {
   errorMessage: string;
   loginData: any= { };
- 
+  isLoggedIn = false;
  constructor(private loginService: LoginService, private route: ActivatedRoute, private router: Router) {
   }
 
@@ -29,10 +29,15 @@ export class LoginComponent  {
          this.router.navigate(['/register']);
        }
        else {
+        //this.isLoggedIn = true;
+         localStorage.setItem('currentUser',JSON.stringify({res}));
          alert('Successful');
+
+        
+         
          if(res.UserType=='SalesRep')
          {
-           this.router.navigate(['/dashboard']);
+          this.router.navigate(['/products']);
          
          }
          else if(res.UserType=='Admin')
@@ -42,6 +47,11 @@ export class LoginComponent  {
        }
        },
          error => this.errorMessage = <any>error);
- }
-
+ 
+        }
+logOut()
+{
+  this.isLoggedIn=null;
+  localStorage.removeItem('currentUser');
+}
 }

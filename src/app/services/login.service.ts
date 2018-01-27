@@ -11,9 +11,10 @@ import {RegisteredUser} from '../models/registereduser';
 
 @Injectable()
 export class LoginService {
-    private userUrl= 'http://salesforcenew20180122090327.azurewebsites.net/api/Login';
+    currentUser:User;
+    private userUrl= 'http://salesforcenew20180126044103.azurewebsites.net/api/Login';
     constructor(private http: HttpClient) { }
-
+    
     loginUser(loginData: RegisteredUser): Observable<any> {
 
         return this.http.get<any>(this.userUrl + '?Username=' + loginData.Username + '&password=' + loginData.password)
@@ -22,10 +23,14 @@ export class LoginService {
         )
           .catch(this.handleError);
            // .do(data => console.log('All: ' + JSON.stringify(data)))
-          //localStorage.setItem('token',response.json().token);
-    
           }
 
+          
+          
+
+        logout(): void {
+            //this.currentUser = ;
+        }
     private handleError(err: HttpErrorResponse){
       console.log('error in login');
       console.log(err.message);

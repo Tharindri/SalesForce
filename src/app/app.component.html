@@ -2,28 +2,101 @@
 <!--The whole content below can be removed with the new code.-->
 <router-outlet></router-outlet>
 
-<div>
+<div class="nav sidebar-nav">
   <nav class='navbar navbar-default'>
     <div class='container-fluid'>
       <a class='navbar-brand'> {{pageTitle}} </a>
-      
+
           <ul class='nav navbar-nav'>
         <li><a [routerLink]="['./welcome']">Home</a></li>
         <li><a [routerLink]="['./products']">Products</a></li>
         <li><a [routerLink]="['./outlet']">Outlets</a></li>
         <li><a [routerLink]="['./users']">Users</a></li>
-        <li><a [routerLink]="['./routes']">Routes</a></li>
-        
-        
-      </ul> 
-      
+
+
+
+        <li ><a [routerLink]="['./routes']">Routes</a></li>
+
+
+      </ul>
+
         <ul class="nav navbar-nav navbar-right">
+
+                <li>
+                        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+                       
+                       <!--
+                        <div id="myModal" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+                              
+                                  
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                      <h4 class="modal-title">Modal Header</h4>
+                                    </div>
+                                    <div class="modal-body">
+
+
+
+                                        !-->
+                                         
+                           <a class="fa fa-bell" (click)="showNotifications()" >
+                            <span  class="fa fa-comment" *ngIf="notificationsLength != 0 "></span>
+                            <span  class="num" *ngIf="notificationsLength != 0 ">{{notificationsLength}}</span>
+
+                           
+
+
+
+<!--
+                            
+                            <p *ngFor="let notification of notifications">
+                                    <p>{{notification.Id}}</p>
+                                    <p>{{notification.StartingDate}}</p>
+                                  
+                                    <p>{{notification.EndingDate}}</p>
+
+
+</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+            !-->                      
+                        </a>
+                        
+                                
+                                
+                              
+                              
+                               
+                                
+                    </li>
+
+
+
           <li><a [routerLink]="['./register']">Register</a></li>
-          <li><a [routerLink]="['./login']">Login</a></li>
+          <li><a [routerLink]="['./login']">Login</a>
+          
+         <!-- <li *ngIf="!isLoggedIn()">
+            <li><a [routerLink]="['./login']">Login</a>
+        </li>
+        <li *ngIf="isLoggedIn()">
+            <a (click)="logOut()">Log Out</a>
+        </li>
+          !-->
+          
+          
       </ul>
     </div>
   </nav>
-  
+
 
 
 
@@ -63,7 +136,7 @@
                       <a href="#">Contact</a>
                   </li>
               </ul>
-          
+
 
 !-->
 

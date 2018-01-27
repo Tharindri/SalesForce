@@ -12,7 +12,7 @@ import { IProduct } from '../models/product';
 export class ProductService {
   products: any[] = [];
 
-  private _productUrl= 'http://salesforcenew20180122090327.azurewebsites.net/api/Product';
+  private _productUrl= 'http://salesforcenew20180126044103.azurewebsites.net/api/Product';
   constructor(private _http: HttpClient) { }
   getProducts(): Observable<any> {
     return this._http.get<IProduct>(this._productUrl)

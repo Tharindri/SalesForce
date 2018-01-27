@@ -11,7 +11,7 @@ import { Route } from '../models/route';
 export class RouteService {
   routes: any[] = [];
 
-  private routeUrl= 'http://salesforcenew20180122090327.azurewebsites.net/api/Route';
+  private routeUrl= 'http://salesforcenew20180126044103.azurewebsites.net/api/Route';
   constructor(private http: HttpClient) { }
   getRoutes(): Observable<any> {
     return this.http.get<Route>(this.routeUrl)
@@ -24,6 +24,12 @@ export class RouteService {
         .map((routes: Route[]) => routes.find(p => p.Id === Id));
 }
 
+addRoute(route:Route)
+{
+    console.log(route);
+  return this.http.post<Route>(this.routeUrl, route);
+
+}
 
 updateRoute(route:Route)
 {

@@ -1,0 +1,28 @@
+thead{
+    background-color:rgba(64, 6, 94, 0.514);
+}
+table{
+  color: #252524  ;
+}
+
+td{
+    color: rgb(7, 2, 26)
+  }
+  h5{
+      color: black;
+  }
+
+
+input{
+    color: rgb(22, 20, 20),
+    
+}
+div{
+    color: rgb(6, 5, 7);
+}
+#txtbox {
+    font-size: 18pt;
+    height: 42px;
+    width : 800px;
+}
+

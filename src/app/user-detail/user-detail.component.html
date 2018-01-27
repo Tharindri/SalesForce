@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="https://bootswatch.com/3/cyborg/bootstrap.min.css">
+ <link rel="stylesheet" href="https://bootswatch.com/3/darkly/bootstrap.min.css">
 
 <!--
 <div class='panel panel-primary' *ngIf='user'>
@@ -12,27 +12,27 @@
       <div>Username:
         {{user.Username}}
       </div>
-      
+
       <div>FirstName:
           {{user.FirstName}}
       </div>
-        
+
       <div>LastName:
             {{user.LastName}}
       </div>
-          
+
       <div>ResidenceNo:
               {{user.ResidenceNo}}
       </div>
-            
+
       <div>Lane:
           {{user.Lane}}
         </div>
-        
+
         <div>City:
             {{user.City}}
           </div>
-          
+
           <div>ContactNo:
               {{user.ContactNo}}
             </div>
@@ -40,16 +40,16 @@
             <div>Email:
                 {{user.Email}}
               </div>
-                  
+
               <div>Gender:
                   {{user.Gender}}
                 </div>
-                
+
     </div>
 !-->
     <td><button class="btn btn-primary" (click)="showEditUserForm(user)" ><i class="fa fa-edit">Edit</i></button>
       <button class="btn btn-success"><i class="fa fa-minus">Delete</i></button>
-      
+
     </td>
 
 
@@ -64,49 +64,64 @@
         <div class='panel-body'>
 <div *ngIf="user">
     <h4>{{ editedUser.Username}} </h4>
-    <div><span>id: </span>{{editedUser.Id}}</div>
+    <div><span>Id: </span>{{editedUser.Id}}</div>
     <div>
+
+
+    <div>Id:
+        <input type="text" name="Id" [(ngModel)]="editedUser.Id" />
+    </div><br/>
+
+     <div>NIC:
+        <input type="text" name="NIC" [(ngModel)]="editedUser.NIC" />
+    </div><br/>
+
       <div>Username:
         <input type="text" name="Username" [(ngModel)]="editedUser.Username" />
-      </div>
-      
+      </div><br/>
+
       <div>FirstName:
           <input type="text" name="FirstName"[(ngModel)]="editedUser.FirstName"/>
-      </div>
-        
+      </div><br/>
+
       <div>LastName:
             <input [(ngModel)]="editedUser.LastName" placeholder="LastName"/>
-      </div>
-          
+      </div><br/>
+
       <div>ResidenceNo:
               <input [(ngModel)]="editedUser.ResidenceNo" placeholder="ResidenceNo"/>
-      </div>
-            
+      </div><br/>
+
       <div>Lane:
           <input [(ngModel)]="editedUser.Lane" placeholder="Lane"/>
-        </div>
-        
+        </div><br/>
+
         <div>City:
             <input [(ngModel)]="editedUser.City" placeholder="City"/>
-          </div>
-          
+          </div><br/>
+
           <div>ContactNo:
               <input [(ngModel)]="editedUser.ContactNo" placeholder="ContactNo"/>
-            </div>
+            </div><br/>
 
             <div>Email:
                 <input [(ngModel)]="editedUser.Email" placeholder="Email"/>
               </div>
-                  
+              <br/>
+
               <div>Gender:
                   <input [(ngModel)]="editedUser.Gender" placeholder="Gender"/>
                 </div>
-
+                <br/>
+                <div>UserType:
+                        <input [(ngModel)]="editedUser.UserType" placeholder="UserType"/>
+                      </div>
+                      <br/>
           <div>
             <input id="date" type="text" bsDatepicker>
           </div>
-                
-                
+
+
     </div>
 
   </div>
@@ -115,7 +130,7 @@
         <p>
             <button type="button" class="btn btn-primary" (click)="updateUser(editedUser)">Submit</button>
             <button type="button" class="btn btn-warning" (click)="cancelEdits()">Cancel</button>
-            
+
           </p>
 
 </div>
@@ -125,4 +140,4 @@
         <button> <h5>Back </h5></button>
     </a>
 </div>
-
+ 

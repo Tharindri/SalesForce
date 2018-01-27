@@ -1,0 +1,51 @@
+<h3>
+  Add User Routes 
+</h3>
+<br/>
+<br/>
+
+<button click="getUsers()"> User
+<select [(ngModel)]="userRoutedata.UserId">
+  <option *ngFor="let user of users" value="user.Username">
+    {{user.Username}}
+  </option>
+</select>
+</button>
+<br/>
+<br/>
+
+
+<button click="getRoutes()">
+Route
+  <select [(ngModel)]="userRoutedata.RouteId">
+    <option *ngFor="let route of routes" value="route.Id">
+      {{route.Id}}
+    </option>
+  </select>
+  </button>
+  <br/>
+  <br/>
+ 
+
+
+  <button click="getVans()">
+    Van
+      <select [(ngModel)]="userRoutedata.VanId">
+        <option *ngFor="let van of vans" value="van.Id">
+          {{van.Id}}
+        </option>
+      </select>
+      </button>
+<br/>
+<br/>
+<button> Date: 
+  <div>
+    <input id="date" type="text" bsDatepicker [(ngModel)]="userRoutedata.Date">
+</div>
+</button>
+ 
+
+<div class="col-lg-10 col-lg-offset-2">
+  <button type="reset" class="btn btn-default">Cancel</button>
+  <button type="submit" class="btn btn-primary" (click)="post()">Submit</button>
+</div>

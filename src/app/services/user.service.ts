@@ -9,9 +9,9 @@ import { User } from '../models/user';
 
 @Injectable()
 export class UserService {
-  products: any[] = [];
+  users: any[] = [];
 
-  private userUrl= 'http://salesforcenew20180122090327.azurewebsites.net/api/Users';
+  private userUrl= 'http://salesforcenew20180126044103.azurewebsites.net/api/Users';
   constructor(private _http: HttpClient) { }
   getUsers(): Observable<any> {
     return this._http.get<User>(this.userUrl)
@@ -24,7 +24,12 @@ export class UserService {
         .map((users: User[]) => users.find(p => p.Id === Id));
 }
 
+addUser(user:User)
+{
+    //console.log(user);
+  return this._http.post<User>(this.userUrl, user);
 
+}
 updateUser(user:User)
 {
   console.log(user);

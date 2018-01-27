@@ -1,0 +1,86 @@
+<div mat-dialog-content>
+
+    <table class="table">
+        <thead>
+        <tr>
+    
+          <th>Id</th>
+          <th>StartingDate</th>
+          <th>EndingDate</th>
+          <th>Reason</th>
+          <th>status</th>
+          <th>UserId</th>
+          <th></th>
+          <th></th>
+          
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let notification of notifications">
+          <td>{{notification.Id}}</td>
+          <td>{{notification.StartingDate}}</td>
+          <td>{{notification.EndingDate}}</td>
+          <td>{{notification.Reason}}</td>
+          <td>{{notification.status}}</td>
+          <td>{{notification.UserId}}</td>
+          <td><button (click)="updateStatus(notification.Id)">Ok</button></td>
+          <td><button (click)="updateCancel(notification.Id)">Cancel</button></td>
+         
+        </tr>
+        </tbody>
+    
+      </table>
+
+</div>
+<!--<div>
+    <div class="modal-dialog">
+  
+      
+      <div class="modal-content">
+        <div class="modal-header">
+          
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body">
+            
+            <table class="table">
+                <thead>
+                <tr>
+            
+                  <th>Id</th>
+                  <th>StartingDate</th>
+                  <th>EndingDate</th>
+                  <th>Reason</th>
+                  <th>status</th>
+                  <th>UserId</th>
+                  <th></th>
+                  <th></th>
+                  
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let notification of notifications">
+                  <td>{{notification.Id}}</td>
+                  <td>{{notification.StartingDate}}</td>
+                  <td>{{notification.EndingDate}}</td>
+                  <td>{{notification.Reason}}</td>
+                  <td>{{notification.status}}</td>
+                  <td>{{notification.UserId}}</td>
+                  <td><button (click)="updateStatus()">Ok</button></td>
+                  <td><button>Cancel</button></td>
+                 
+                </tr>
+                </tbody>
+            
+              </table>
+
+
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</div>
+</div>
+
+</div>
+</div>
+-->

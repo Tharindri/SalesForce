@@ -4,11 +4,13 @@
   <div class="panel-heading">
     {{pageTitle}}
   </div>
+
+  <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal" (click)="showAddOutletForm()">Add Outlet <i class="fa fa-plus"></i></button>
+  <br/>
+  <br/>
+
   <div class="panel-body">
-    <div class="row">
-
-    </div>
-
+    
 
     <div class="table-responsive">
       <table class="table">
@@ -25,7 +27,8 @@
           <th>Email</th>
           <th>Status</th>
           <th>RouteId</th>
-          <th>&nbsp;</th>
+          <th>  </th>
+          <th>  </th>
         </tr>
         </thead>
         <tbody>
@@ -41,20 +44,32 @@
           <td>{{outlet.Status}}</td>
           <td>{{outlet.RouteId}}</td>
 
-        <td><button class="btn btn-primary" (click)="showEditOutletForm(outlet)"><i class="fa fa-edit">Edit</i></button>
-          <button class="btn btn-success" (click)="removeOutlet(outlet)"><i class="fa fa-minus">Delete</i></button>
+        <td><button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModals" (click)="showEditOutletForm(outlet)"><i class="fa fa-edit"></i></button></td>
+          <td><button class="btn btn-primary" (click)="removeOutlet(outlet)"><i class="fa fa-minus"></i></button>
           
         </td>
         </tr>
         </tbody>
 
       </table>
-<button class="btn btn-success"(click)="showAddOutletForm()">Add New Outlet<i class="fa fa-plus"></i></button>
-    <br/>
-    <br/>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"></h4>
+      </div>
+      <div class="modal-body">
+
+      
 
 
-
+        <br/>
+        <br/>
 
     <form *ngIf="outletForm">
       <h4>Add New Outlet</h4>
@@ -78,8 +93,29 @@
   
     </form>
   
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+  </div>
   
-  
+  </div>
+  </div>  
+</div>
+
+
+
+<!-- Modal -->
+<div id="myModals" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"></h4>
+      </div>
+      <div class="modal-body">
+
     <form *ngIf="editOutletForm">
       <h2>Edit Outlet Details</h2>
   
@@ -103,7 +139,23 @@
   
     </form>
   
+
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+  
+  </div>
+  </div>  
+</div> 
+
+
+
+
+
+
       </div>
     </div>
-  
+  </div>
   

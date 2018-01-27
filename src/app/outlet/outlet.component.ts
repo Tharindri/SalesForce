@@ -12,10 +12,10 @@ export class OutletComponent implements OnInit {
   
     errorMessage: string;
     private outlets: Outlet[];
+    newOutlet:any={};
     outletForm:boolean=false;
     editOutletForm:boolean=false;
      isNewForm:boolean;
-     newOutlet:any={};
      editedOutlet:any={};
   constructor(private outletService:OutletService) { 
     this.outletService.getOutlets()
@@ -57,7 +57,7 @@ export class OutletComponent implements OnInit {
     {
       this.outlets.push(outlet);
   this.outletService.addOutlet(outlet)
-      .subscribe(product => {
+      .subscribe(outlet => {
       
     
   });
@@ -68,19 +68,19 @@ export class OutletComponent implements OnInit {
   }
   
   
-  updateProduct(outlet:Outlet){
+  updateOutlet(Id:number,outlet:Outlet){
   
-  this.outletService.updateOutlet(this.editedOutlet).subscribe(product=>{
+  this.outletService.updateOutlet(Id,this.editedOutlet).subscribe(outlet=>{
   
   });
   this.editOutletForm=false;
   this.editedOutlet={};
   }
   
-  removeOutlet(outlet:Outlet)
+  removeOutlet(Id:number,outlet:Outlet)
   {
     this.outlets = this.outlets.filter(h => h !== outlet);
-  this.outletService.deleteOutlet(outlet).subscribe(outlet=>{
+  this.outletService.deleteOutlet(Id,outlet).subscribe(outlet=>{
     console.log(outlet);
   });
   }

@@ -5,17 +5,18 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 
-import { User } from '../models/user';
+import { Van } from '../models/van';
 
 @Injectable()
-export class RegisterService {
-    private userUrl= 'http://salesforcenew20180126044103.azurewebsites.net/api/Users';
+export class VanService {
+    vans: any[] = [];
+    private vanUrl= 'http://salesforcenew20180126044103.azurewebsites.net/api/Van';
     constructor(private http: HttpClient) { }
 
-    sendUserRegistration(registerData:User):Observable<any>{
-        return this.http.post(this.userUrl,registerData);
-         
+    getVans(): Observable<any> {
+        return this.http.get<Van>(this.vanUrl)
+          .do(data => console.log('All: ' + JSON.stringify(data)))
+          
       }
-    
       
 }

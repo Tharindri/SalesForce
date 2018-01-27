@@ -55,7 +55,7 @@ if(!product){
 this.editProductForm=true;
 //this.isNewForm=false;
 this.editedProduct=product;
-
+console.log(product);
 }
 
 
