@@ -1,0 +1,16 @@
+<agm-map 
+  [latitude]="lat"
+  [longitude]="lng"
+  [zoom]="zoom"
+  [disableDefaultUI]="false"
+  [zoomControl]="false">
+
+  <agm-marker
+      *ngFor="let location of locations; let i = index"
+      (markerClick)="clickedMarker(location.Name, i)"
+      [latitude]="location.Latitude"
+      [longitude]="location.Longitude"
+      [label]="location.Name">          
+  </agm-marker>
+
+</agm-map>

@@ -6,8 +6,8 @@
   </div>
 <br/>
 <br/>
-<br/>
-  <button type="button" class="btn btn-success " data-toggle="modal" data-target="#myModal" (click)="showAddProductForm()">Add Product <i class="fa fa-plus"></i></button>
+
+  <button type="button" class="btn btn-success " data-toggle="modal" data-target="#myModal" (click)="showAddProductForm()" *ngIf="isShow">Add Product <i class="fa fa-plus"></i></button>
   
 
   <div class="panel-body">
@@ -50,8 +50,8 @@
           <td>{{product.Quantity}}</td>
           <td>{{product.DiscountType}}</td>
         
-          <td><button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModals" (click)="showEditProductForm(product)" ><i class="fa fa-edit"></i></button>
-          <td><button class="btn btn-success"><i class="fa fa-minus"></i></button></td>
+          <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModals" (click)="showEditProductForm(product)" *ngIf="isShow"><i class="fa fa-edit"></i></button>
+          <td><button class="btn btn-primary" (click)="removeProduct(product.Id)" *ngIf="isShow"><i class="fa fa-minus"></i></button></td>
           
         
         </tr>

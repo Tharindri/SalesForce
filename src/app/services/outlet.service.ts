@@ -26,15 +26,15 @@ export class OutletService {
 
   }
 
-  updateOutlet(Id:number,outlet:Outlet)
+  updateOutlet(outlet:Outlet)
   {
     console.log(outlet);
-    return this._http.put('http://salesforcenew20180126044103.azurewebsites.net/api/Outlets/'+Id,this.outlets);
+    return this._http.put(this.OutletUrl,outlet);
   }
 
-  deleteOutlet(Id:number,outlet:Outlet)
+  deleteOutlet(Id:number)
   {
-    console.log(outlet);
+    
     return this._http.delete('http://salesforcenew20180126044103.azurewebsites.net/api/Outlets/'+Id);
   }
   private handleError(err: HttpErrorResponse){

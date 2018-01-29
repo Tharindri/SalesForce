@@ -31,7 +31,11 @@ export class ProductService {
     console.log(product);
     return this._http.put<IProduct>(this._productUrl,product);
   }
-
+  deleteProduct(Id:number)
+  {
+    
+    return this._http.delete('http://salesforcenew20180126044103.azurewebsites.net/api/Product/'+Id);
+  }
 
 
   private handleError(err: HttpErrorResponse){

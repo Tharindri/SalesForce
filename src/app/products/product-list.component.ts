@@ -19,6 +19,7 @@ export class ProductListComponent implements OnInit {
   newProduct:any={};
   editedProduct:any={};
 _listFilter:string;
+isShow:boolean=false;
 
 get listFilter():string{
 return this._listFilter;
@@ -98,6 +99,14 @@ this.editProductForm=false;
 this.editedProduct={};
 }
 
+removeProduct(Id:number)
+{
+  
+this._productService.deleteProduct(Id).subscribe(product=>{
+  this.products = this.products.filter(h => h !== product);
+  console.log(product);
+});
+}
 cancelEdits()
 {
   this.editedProduct={};
@@ -113,5 +122,9 @@ cancelEdits()
       this.filteredProducts = this.products;
     },
       error => this.errorMessage = <any>error);
+
+if(localStorage.getItem('userType')==='Sales' || localStorage.getItem('userType')==='Admin' ){
+  this.isShow=true;
+}      
   }
 }

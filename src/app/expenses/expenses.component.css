@@ -1,0 +1,13 @@
+thead{
+    background-color:rgba(13, 22, 2, 0.514);
+}
+table{
+  color: #6e8b0f  ;
+}
+
+td{
+    color: #e7d8d8 ; 
+  }
+.btn btn-danger{
+    color: blue;
+  }

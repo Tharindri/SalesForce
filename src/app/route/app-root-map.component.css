@@ -1,0 +1,10 @@
+agm-map {
+    height:450px;
+    width: 750px;
+}
+*{
+    font-family: Lato;
+}
+h1 {
+    text-align: center;
+}

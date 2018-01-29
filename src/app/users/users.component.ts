@@ -14,6 +14,7 @@ export class UsersComponent implements OnInit {
   isNewForm:boolean;
   editUserForm:boolean=false;
   editedUser:any={};
+  
   constructor(private userService:UserService) { }
 
   ngOnInit() {
@@ -22,8 +23,9 @@ export class UsersComponent implements OnInit {
       
     },
       error => this.errorMessage = <any>error);
+  
+    
   }
-
 
   showAddUserForm()
   {
@@ -47,7 +49,14 @@ export class UsersComponent implements OnInit {
   console.log(user);
   }
   
-  
+  removeUser(Id:number)
+  {
+    
+  this.userService.deleteUser(Id).subscribe(user=>{
+    this.users = this.users.filter(h => h !== user);
+    console.log(user);
+  });
+  }
   saveUser(user:User)
   {
     if(this.isNewForm)

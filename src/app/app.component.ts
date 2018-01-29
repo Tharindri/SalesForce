@@ -1,4 +1,4 @@
-import {Component,OnInit,Inject} from '@angular/core';
+import { Component,OnInit,Inject } from '@angular/core';
 import { ProductService } from './services/product.service';
 import { RegisterService } from './services/register.service';
 import { LoginService } from './services/login.service';
@@ -9,7 +9,9 @@ import { VanService } from './services/van.service';
 import { RouteOutletService } from './services/routeOutlet.service';
 import { NotificationService } from './services/notification.service';
 import { Notification } from './models/notification';
-import {MatDialog,MatDialogRef,MAT_DIALOG_DATA} from '@angular/material';
+import { ExpenseService } from './services/expense.service';
+import { MatDialog,MatDialogRef,MAT_DIALOG_DATA } from '@angular/material';
+import { Observable } from 'rxjs';
 //import {routerTransition} from './'
 @Component({
   selector: 'app-notify',
@@ -19,15 +21,14 @@ import {MatDialog,MatDialogRef,MAT_DIALOG_DATA} from '@angular/material';
 export class NotifyComponent implements OnInit {
   private notifications: Notification[];
   
+
   constructor(private notificationService:NotificationService) { }
 
   ngOnInit() {
-    this.notificationService.getNotification().subscribe(data=>{
-      this.notifications=data;
-      
-
-    });
-    }
+      this.notificationService.getNotification().subscribe(data=>{
+        this.notifications=data;
+        console.log(this.notifications) });
+  }
 
   updateStatus(Id:number)
   {
@@ -53,11 +54,7 @@ export class NotifyComponent implements OnInit {
 
   }
 
-
-
 }
-
-
 
 @Component({
   selector: 'pm-root',
@@ -67,14 +64,13 @@ export class NotifyComponent implements OnInit {
 
 
   ,
-  providers:[ ProductService ,RegisterService,LoginService,OutletService,UserService,RouteService,VanService,RouteOutletService,NotificationService]
+  providers:[ ProductService ,RegisterService,LoginService,OutletService,UserService,RouteService,VanService,RouteOutletService,NotificationService,ExpenseService]
   
 })
 export class AppComponent implements OnInit{
   pageTitle: string = 'SFA-Products';
-notifications: Notification[];
-notificationsLength:number;
-
+  notifications: Notification[];
+  notificationsLength:number;
 constructor(private notificationService:NotificationService,private loginService:LoginService,public dialog:MatDialog
 ,@Inject(MAT_DIALOG_DATA) public data:any){
 
@@ -82,19 +78,27 @@ constructor(private notificationService:NotificationService,private loginService
 
 ngOnInit()
 {
-
-this.notificationService.getNotification().subscribe(data=>{
-  this.notifications=data;
-  this.notificationsLength=this.notifications.length;
-  console.log(this.notifications);
-});
+  Observable.interval(1000)
+  .takeWhile(() => true)
+  .subscribe(i => {
+    this.notificationService.getNotification().subscribe(data=>{
+      this.notifications=data;
+      this.notificationsLength=this.notifications.length;
+      console.log(this.notifications) });
+  });
 }
 
 showNotifications(){
-this.dialog.open(NotifyComponent,{
-  data:{notifications:this.notifications},
-  width:'550px'
-});
+  this.dialog.open(NotifyComponent,{
+    data:{notifications:this.notifications},
+    width:'550px'
+    });
+}
+
+logOut() {
+  localStorage.removeItem('isLoggedIn');
+  localStorage.removeItem('userType');
+  localStorage.removeItem('isShowNav');
 }
 }
 

@@ -1,3 +1,4 @@
+
 <h3>
   Add User Routes 
 </h3>
@@ -5,9 +6,9 @@
 <br/>
 
 <button click="getUsers()"> User
-<select [(ngModel)]="userRoutedata.UserId">
-  <option *ngFor="let user of users" value="user.Username">
-    {{user.Username}}
+<select [(ngModel)]="userRoutedata.UserId" name="UserId">
+  <option *ngFor="let user of users" [ngValue]="user.Id">
+    {{user.Id}}
   </option>
 </select>
 </button>
@@ -17,8 +18,8 @@
 
 <button click="getRoutes()">
 Route
-  <select [(ngModel)]="userRoutedata.RouteId">
-    <option *ngFor="let route of routes" value="route.Id">
+  <select [(ngModel)]="userRoutedata.RouteId" name="RouteId">
+    <option *ngFor="let route of routes" [ngValue]="route.Id">
       {{route.Id}}
     </option>
   </select>
@@ -30,22 +31,39 @@ Route
 
   <button click="getVans()">
     Van
-      <select [(ngModel)]="userRoutedata.VanId">
-        <option *ngFor="let van of vans" value="van.Id">
+      <select [(ngModel)]="userRoutedata.VanId" name="VandId">
+        <option *ngFor="let van of vans" [ngValue]="van.Id">
           {{van.Id}}
         </option>
       </select>
       </button>
+
+ <button click="getProducts()">
+    Products
+      <select [(ngModel)]="userRoutedata.Id" name="Id">
+       <option *ngFor="let product of products" [ngValue]="product.Id">
+          {{product.Id}}
+        </option>
+      </select>  
+      <select [(ngModel)]="userRoutedata.Quantity" name="Quantity">
+        <option *ngFor="let product of products" [ngValue]="product.Quantity">
+              {{product.Quantity}}
+        </option>
+      </select>
+  </button>
+
+
 <br/>
 <br/>
 <button> Date: 
   <div>
-    <input id="date" type="text" bsDatepicker [(ngModel)]="userRoutedata.Date">
+    <input id="date" type="text" bsDatepicker [(ngModel)]="userRoutedata.Date1">
 </div>
 </button>
- 
+ <br/>
+<br/>
 
-<div class="col-lg-10 col-lg-offset-2">
+<div>
   <button type="reset" class="btn btn-default">Cancel</button>
   <button type="submit" class="btn btn-primary" (click)="post()">Submit</button>
 </div>

@@ -1,8 +1,71 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { RouteService } from '../services/route.service';
 import { Route } from '../models/route';
 import { UserService } from '../services/user.service';
 import { User } from '../models/user';
+import { Location } from './location';
+
+import { MouseEvent } from '@agm/core';
+import { google } from '@agm/core/services/google-maps-types';
+
+
+@Component({
+  selector: 'app-root-map',
+  templateUrl: './app-root-map.component.html',
+  styleUrls: [ './app-root-map.component.css' ]
+})
+export class RootMapComponent implements OnInit {
+
+  locations: Location[];
+  constructor( public dialogRef: MatDialogRef<RootMapComponent>,
+               @Inject(MAT_DIALOG_DATA) public data: any ){}
+
+  ngOnInit() {
+    this.locations = this.data.locations;
+  }
+  end: any;
+  // google maps zoom level
+  zoom: number = 14;
+  
+  // initial center position for the map
+  lat: number = 6.796443;
+  lng: number = 79.900668;
+
+  clickedMarker(label: string, index: number) {
+    //console.log(clicked the marker: ${label || index})
+  }
+  
+  /*markers: marker[] = [
+	  {
+		  lat: 6.797128,
+		  lng: 79.901893,
+		  label: 'FIT',
+		  draggable: false
+	  },
+	  {
+		  lat: 6.795911,
+		  lng: 79.887597,
+		  label: 'KZONE',
+		  draggable: false
+	  },
+	  {
+		  lat: 6.82125,
+		  lng: 79.891498,
+		  label: 'Rathmalana Air Port',
+		  draggable: false
+	  }
+  ]*/
+}
+
+// just an interface for type safety.
+interface marker {
+	lat: number;
+	lng: number;
+	label?: string;
+	draggable: boolean;
+}
+
 @Component({
   selector: 'app-route',
   templateUrl: './route.component.html',
@@ -16,14 +79,21 @@ export class RouteComponent implements OnInit {
   editRouteForm:boolean=false;
   newRoute:any={};
   isNewForm:boolean;
-  constructor(private routeService:RouteService) { }
+  isShow:boolean=false;
+  locations: Location[];
+  constructor( private routeService:RouteService,
+               public dialog: MatDialog ) { }
 
   ngOnInit() {
-    this.routeService.getRoutes()
-    .subscribe(res => { this.routes = res;
-      
-    },
-      error => this.errorMessage = <any>error);
+    this.routeService.getRoutes().subscribe(res => { 
+        this.routes = res;
+      },
+      error => this.errorMessage = <any>error
+    );
+
+      if(localStorage.getItem('userType')==='Sales' || localStorage.getItem('userType')==='Admin' ){
+        this.isShow=true; 
+      }
   }
   showAddRouteForm()
   {
@@ -36,33 +106,38 @@ export class RouteComponent implements OnInit {
   }
   showEditRouteForm(route:Route)
   {
-  if(!route){
-    this.routeForm=false;
-    return;
+    if(!route){
+      this.routeForm=false;
+      return;
+    }
+    this.editRouteForm=true;
+    //this.isNewForm=false;
+    this.editedRoute=route;
   }
-  this.editRouteForm=true;
-  //this.isNewForm=false;
-  this.editedRoute=route;
-  
-  }
-  
   
   saveRoute(route:Route)
   {
     if(this.isNewForm)
     {
       this.routes.push(route);
-  this.routeService.addRoute(route)
-      .subscribe(route => {
-      
-    
-  });
-  
+      this.routeService.addRoute(route)
+        .subscribe(route => {});
     }
-    
     this.routeForm=false;
   }
-  
 
-
+  showMap(id: number) 
+  {
+    this.routeService.getLocations(id).subscribe(data => {
+      console.log(data);
+      this.locations = data;
+      console.log(this.locations);
+      this.dialog.open(RootMapComponent, {
+        data: { locations: this.locations },
+        width: '800px'
+      });
+    },
+    (error) => {console.log(error)}
+    );
+  }
 }

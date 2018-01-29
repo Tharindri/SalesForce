@@ -36,6 +36,11 @@ updateUser(user:User)
   return this._http.put<User>(this.userUrl,user);
 }
 
+deleteUser(Id:number)
+{
+  
+  return this._http.delete('http://salesforcenew20180126044103.azurewebsites.net/api/Users/'+Id);
+}
 
   private handleError(err: HttpErrorResponse){
     

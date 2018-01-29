@@ -44,5 +44,18 @@ h5{
 	width: 100%;
 	min-height: 100%;
 	z-index: 1000;
-	background-color: rgba(58, 46, 87, 0.518);
+	background-color: rgba(142, 141, 145, 0.518);
 }
+.main-container{
+  min-height: 800px;
+  margin-bottom: 20px
+}
+.img-main-carousel{
+  max-height: 500px;
+  margin: 0 auto;
+}
+.di
+{
+	background-color:rgba(211, 241, 240, 0.518);
+}
+

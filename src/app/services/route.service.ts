@@ -37,7 +37,11 @@ updateRoute(route:Route)
   return this.http.put<Route>(this.routeUrl,route);
 }
 
-
+getLocations(id: number): Observable<any> 
+{
+  return this.http.get('http://salesforcenew20180126044103.azurewebsites.net/api/OutletsOfTheRoute/'+id)
+    .map(response => response);
+}
   private handleError(err: HttpErrorResponse){
     
     console.log(err.message);

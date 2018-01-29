@@ -17,6 +17,8 @@ export class OutletComponent implements OnInit {
     editOutletForm:boolean=false;
      isNewForm:boolean;
      editedOutlet:any={};
+     isShow:boolean=false;
+     
   constructor(private outletService:OutletService) { 
     this.outletService.getOutlets()
     .subscribe(res => { this.outlets = res; },
@@ -68,19 +70,20 @@ export class OutletComponent implements OnInit {
   }
   
   
-  updateOutlet(Id:number,outlet:Outlet){
+  updateOutlet(outlet:Outlet){
   
-  this.outletService.updateOutlet(Id,this.editedOutlet).subscribe(outlet=>{
+  this.outletService.updateOutlet(this.editedOutlet).subscribe(outlet=>{
   
   });
   this.editOutletForm=false;
   this.editedOutlet={};
   }
   
-  removeOutlet(Id:number,outlet:Outlet)
+  removeOutlet(Id:number)
   {
+    //this.outlets = this.outlets.filter(h => h !== outlet);
+  this.outletService.deleteOutlet(Id).subscribe(outlet=>{
     this.outlets = this.outlets.filter(h => h !== outlet);
-  this.outletService.deleteOutlet(Id,outlet).subscribe(outlet=>{
     console.log(outlet);
   });
   }
@@ -97,6 +100,10 @@ export class OutletComponent implements OnInit {
 
 
   ngOnInit() {
+    if(localStorage.getItem('userType')==='Sales' || localStorage.getItem('userType')==='Admin' ){
+      this.isShow=true;
+
   }
 
+}
 }

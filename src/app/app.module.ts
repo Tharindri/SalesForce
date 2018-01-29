@@ -8,9 +8,11 @@ import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 import {MatDialogModule,MatDialogRef,MAT_DIALOG_DATA} from '@angular/material';
-
+import { AgmCoreModule } from '@agm/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PushNotificationModule } from 'ng-push-notification';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+
 import { NotificationService } from './services/notification.service';
 
 import { ProductListComponent } from './products/product-list.component';
@@ -21,10 +23,12 @@ import { OutletComponent } from './outlet/outlet.component';
 import { UsersComponent } from './users/users.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { RouteComponent } from './route/route.component';
+import { RouteComponent, RootMapComponent } from './route/route.component';
 import { RouteDetailComponent } from './route-detail/route-detail.component';
 import { UserRouteComponent } from './user-route/user-route.component';
 import { VanComponent } from './van/van.component';
+import { AuthGuard,AdminHrGuard,AdminGuard,FinanceGuard} from './guard/auth.guard';
+import { ExpensesComponent } from './expenses/expenses.component';
 //import { NotifyComponent } from './notify/notify.component';
 
 @NgModule({
@@ -39,10 +43,12 @@ import { VanComponent } from './van/van.component';
     UserDetailComponent,
     DashboardComponent,
     RouteComponent,
+    RootMapComponent,
     RouteDetailComponent,
     UserRouteComponent,
     VanComponent,
-    NotifyComponent
+    NotifyComponent,
+    ExpensesComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -51,9 +57,13 @@ import { VanComponent } from './van/van.component';
     HttpModule,
     HttpClientModule,
     MatDialogModule,
+    CarouselModule.forRoot(),
     BsDatepickerModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAffo2SGGslIiYkLH9y_gjGmnMkrL0YoxM'
+    }),
     RouterModule.forRoot([
-      {path: 'welcome', component: WelcomeComponent},
+      {path: 'home', component: WelcomeComponent,canActivate:[AuthGuard]},
       {path: 'products', component: ProductListComponent},
       { path: 'routes/:id', component: RouteDetailComponent },
       
@@ -63,24 +73,28 @@ import { VanComponent } from './van/van.component';
         { path: 'routes/van', component: VanComponent }
       ]},
 
-       {path: 'outlet', component: OutletComponent},
-       {path: 'users/:id', component: UserDetailComponent},
-      {path: 'users', component: UsersComponent},
-      
-      {path: 'app', component: NotifyComponent},
-     {path: 'register', component: RegisterComponent},
-     {path: 'login', component: LoginComponent},
-      {path: '', redirectTo: 'welcome', pathMatch: 'full'},
-      {path: '**', redirectTo: 'welcome', pathMatch: 'full'}
-      
+        {path: 'outlet', component: OutletComponent},
+        {path: 'users/:id', component: UserDetailComponent},
+        {path: 'users', component: UsersComponent, canActivate:[AdminHrGuard]},
+        {path: 'expenses', component: ExpensesComponent,canActivate:[FinanceGuard]},
+        {path: 'app', component: NotifyComponent ,canActivate:[AdminHrGuard]},
+        {path: 'register', component: RegisterComponent,canActivate:[AdminGuard]},
+        {path: 'login', component: LoginComponent},
+        {path: '', redirectTo: 'login', pathMatch: 'full'},
+        {path: '**', redirectTo: 'login', pathMatch: 'full'}
     ])
   ],
     
   
-  providers: [NotificationService,{provide:MAT_DIALOG_DATA,useValue:{}},
-    {provide:MatDialogRef,useValue:{}}
-  ],
-  entryComponents:[NotifyComponent],
+  providers: [ NotificationService,
+               {provide:MAT_DIALOG_DATA,useValue:{}},
+               {provide:MatDialogRef,useValue:{}},
+               AuthGuard,
+               AdminHrGuard,
+               AdminGuard,
+               FinanceGuard
+             ],
+  entryComponents:[ NotifyComponent, RootMapComponent ],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

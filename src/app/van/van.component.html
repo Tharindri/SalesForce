@@ -3,17 +3,13 @@
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
-
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
+        <h4 class="modal-title"></h4>
       </div>
       <div class="modal-body">
-        
-
-
 
           <table class="table">
             <thead>
@@ -22,8 +18,8 @@
               <th>Id</th>
               <th>VanType</th>
               <th>RegistrationNo</th>
-              
-              <th>&nbsp;</th>
+              <th></th>
+              <th></th>
               
             </tr>
             </thead>
@@ -33,24 +29,122 @@
               <td>{{van.VanType}}</td>
             
               <td>{{van.RegistrationNo}}</td>
-            
+              <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModals" (click)="showEditVanForm(van)"><i class="fa fa-edit"></i></button></td>
+              <td><button class="btn btn-primary" (click)="removeVan(van)"><i class="fa fa-minus"></i></button>
               
-              
-            
-            
-             
+            </td>
             </tr>
             </tbody>
         
           </table>
         
-          <button class="btn btn-success"(click)="showAddUserForm()">Add New User<i class="fa fa-plus"></i></button>
+          <button type="button" class="btn btn-success " data-toggle="modal" data-target="#myModalAdd"(click)="showAddVanForm()">Add New Van <i class="fa fa-plus"></i></button>
           <br/>
           <br/>
         </div>
         
         
-        <div>
+
+
+    <!-- Modal -->
+    <div id="myModalAdd" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"></h4>
+          </div>
+          <div class="modal-body">
+    
+          
+    
+    
+            <br/>
+            <br/>
+        <form *ngIf="vanForm">
+          <h4>Add New Van</h4>
+      
+          <p>Id : <input type="text" name="Id" [(ngModel)]="newVan.Id"/></p>  
+          <p>VanType : <input type="text" name="VanType" [(ngModel)]="newVan.VanType"/></p>
+          <p>RegistrationNo : <input type="text" name="RegistrationNo" [(ngModel)]="newVan.RegistrationNo"/></p>
+      <p>
+        <button type="button" class="btn btn-success" (click)="saveVan(newVan)">Submit</button>
+        <button type="button" class="btn btn-warning">Cancel</button>
+        
+      </p>
+      
+      
+        </form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+      </div>
+      </div>  
+    </div>
+    
+
+
+<!-- Modal -->
+<div id="myModals" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"></h4>
+      </div>
+      <div class="modal-body">
+
+    <form *ngIf="editRouteForm">
+      <h2>Edit Outlet Details</h2>
+  
+      <p>Id : <input type="text" name="Id" [(ngModel)]="editedVan.Id"/></p>  
+      <p>VanType : <input type="text" name="VanType" [(ngModel)]="editedVan.VanType"/></p>
+      <p>RegistrationNo : <input type="text" name="RegistrationNo" [(ngModel)]="editedVan.RegistrationNo"/></p>
+      
+  
+  <p>
+    <button type="button" class="btn btn-primary" (click)="updateVan(editedVan)">Submit</button>
+    <button type="button" class="btn btn-warning" (click)="cancelEdits()">Cancel</button>
+    
+  </p>
+  
+  
+    </form>
+  
+
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+  
+  </div>
+  </div>  
+</div> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -62,7 +156,6 @@
 
 
        
-      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
@@ -70,3 +163,5 @@
 
   </div>
 </div>
+
+

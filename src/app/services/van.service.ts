@@ -19,4 +19,26 @@ export class VanService {
           
       }
       
-}
+
+      addVan(van:Van)
+      {
+          console.log(van);
+        return this.http.post<Van>(this.vanUrl, van);
+      
+      }
+      
+      updateVan(van:Van)
+      {
+        console.log(van);
+        return this.http.put<Van>(this.vanUrl,van);
+      }
+      
+      
+        private handleError(err: HttpErrorResponse){
+          
+          console.log(err.message);
+          return Observable.throw(err.message);
+        }
+
+
+    }
