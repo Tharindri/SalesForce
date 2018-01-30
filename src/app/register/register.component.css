@@ -2,3 +2,6 @@ fieldset{
     background-color: rgb(39, 39, 51);
     
 }
+input[type='submit']:disabled{
+    
+}

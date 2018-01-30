@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './user-route.component.html',
   styleUrls: ['./user-route.component.css']
 })
+
 export class UserRouteComponent implements OnInit {
   errorMessage: string;
   users: User[];
@@ -25,7 +26,14 @@ export class UserRouteComponent implements OnInit {
   userRoutedata:any={ };
   constructor(private userService:UserService,private routeService:RouteService,private vanService:VanService,private routeOutletService:RouteOutletService,private productService:ProductService) { }
 
+
+  addFieldValue() {
+    this.products.push(this.userRoutedata)
+    this.userRoutedata = {};
+  }
+
   ngOnInit() {
+    
     this.userService.getUsers()
       
       

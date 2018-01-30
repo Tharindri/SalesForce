@@ -27,7 +27,7 @@ import { RouteComponent, RootMapComponent } from './route/route.component';
 import { RouteDetailComponent } from './route-detail/route-detail.component';
 import { UserRouteComponent } from './user-route/user-route.component';
 import { VanComponent } from './van/van.component';
-import { AuthGuard,AdminHrGuard,AdminGuard,FinanceGuard} from './guard/auth.guard';
+import { AuthGuard,AdminHrGuard,AdminGuard,AdminFinanceGuard} from './guard/auth.guard';
 import { ExpensesComponent } from './expenses/expenses.component';
 //import { NotifyComponent } from './notify/notify.component';
 
@@ -64,19 +64,19 @@ import { ExpensesComponent } from './expenses/expenses.component';
     }),
     RouterModule.forRoot([
       {path: 'home', component: WelcomeComponent,canActivate:[AuthGuard]},
-      {path: 'products', component: ProductListComponent},
+      {path: 'products', component: ProductListComponent,canActivate:[AuthGuard]},
       { path: 'routes/:id', component: RouteDetailComponent },
       
-      { path: 'routes', component: RouteComponent ,
+      { path: 'routes', component: RouteComponent ,canActivate:[AuthGuard],
       children:[
         { path: 'routes/user-route', component: UserRouteComponent },
         { path: 'routes/van', component: VanComponent }
       ]},
 
-        {path: 'outlet', component: OutletComponent},
+        {path: 'outlet', component: OutletComponent,canActivate:[AuthGuard]},
         {path: 'users/:id', component: UserDetailComponent},
         {path: 'users', component: UsersComponent, canActivate:[AdminHrGuard]},
-        {path: 'expenses', component: ExpensesComponent,canActivate:[FinanceGuard]},
+        {path: 'expenses', component: ExpensesComponent,canActivate:[AdminFinanceGuard]},
         {path: 'app', component: NotifyComponent ,canActivate:[AdminHrGuard]},
         {path: 'register', component: RegisterComponent,canActivate:[AdminGuard]},
         {path: 'login', component: LoginComponent},
@@ -92,7 +92,7 @@ import { ExpensesComponent } from './expenses/expenses.component';
                AuthGuard,
                AdminHrGuard,
                AdminGuard,
-               FinanceGuard
+               AdminFinanceGuard
              ],
   entryComponents:[ NotifyComponent, RootMapComponent ],
   bootstrap: [AppComponent]

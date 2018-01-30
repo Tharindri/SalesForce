@@ -51,12 +51,12 @@ export class AdminGuard implements CanActivate {
 
 
 @Injectable()
-export class FinanceGuard implements CanActivate {
+export class AdminFinanceGuard implements CanActivate {
 
     constructor(private router: Router) { }
 
     canActivate() {
-        if (localStorage.getItem('userType')=== 'Finance' ) {
+        if (localStorage.getItem('userType')=== 'Admin' ||localStorage.getItem('userType')=== 'Finance' ) {
             return true;
         }
 

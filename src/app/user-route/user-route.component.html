@@ -40,17 +40,30 @@ Route
 
  <button click="getProducts()">
     Products
-      <select [(ngModel)]="userRoutedata.Id" name="Id">
-       <option *ngFor="let product of products" [ngValue]="product.Id">
-          {{product.Id}}
-        </option>
-      </select>  
-      <select [(ngModel)]="userRoutedata.Quantity" name="Quantity">
-        <option *ngFor="let product of products" [ngValue]="product.Quantity">
-              {{product.Quantity}}
-        </option>
-      </select>
+    <table>
+      <tbody >
+        <tr *ngFor="let product of products; let i = index">
+          <select [(ngModel)]="userRoutedata.Id" name="Id">
+            <option  [ngValue]="product.Id">
+               {{product.Id}}
+             </option>
+             
+           </select>  
+           <input [(ngModel)]="userRoutedata.Quantity" name="Quantity"> 
+           <button class="btn btn-default" type="button" (click)="addFieldValue()">Add</button>
+        </tr>
+      </tbody>
+    </table>
+    <!-- <select [(ngModel)]="userRoutedata.Id" name="Id">
+      <option *ngFor="let product of products; let i = index" [ngValue]="product.Id">
+         {{product.Id}}
+       </option>
+       
+     </select>  
+     <input [(ngModel)]="userRoutedata.Quantity" name="Quantity">  -->
+
   </button>
+
 
 
 <br/>

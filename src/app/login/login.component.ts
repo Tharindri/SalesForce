@@ -30,6 +30,7 @@ export class LoginComponent  {
    this.loginService.loginUser(this.loginData).subscribe(res => {
     console.log(res);
     if(res.status=='Success'){
+      alert('Login Successfull');
       console.log('success');
       this.userId = res.Id;
      
@@ -52,44 +53,13 @@ export class LoginComponent  {
 else{
     alert('Invalid username or password');
     console.log('failed');
+    this.router.navigate(['/login']);
 }
 
    },
   (error) => {
     console.log('Error');
   });
-      //if(res.length === 1) {
-        //if(res[0].)
-//console.log(res);
-
-        
-      //}
-     
-      /* if (res.status == 'Fail' || res.status == 'No Username'){
-         alert('Invalid username or password');
-         this.router.navigate(['/register']);
-       }
-       else {
-        this.isLoggedIn = true;
-         localStorage.setItem('currentUser',JSON.stringify({res}));
-         alert('Successful');
-
-        
-         
-         if(res.UserType=='SalesRep')
-         {
-          this.router.navigate(['/products']);
-         
-         }
-         else if(res.UserType=='Admin')
-         {
-         this.router.navigate(['/register']);
-         }
-       }
-       },
-         error => this.errorMessage = <any>error);
- 
-        }*/
       }
 logOut()
 {
