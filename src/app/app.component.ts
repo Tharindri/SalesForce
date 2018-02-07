@@ -10,8 +10,10 @@ import { RouteOutletService } from './services/routeOutlet.service';
 import { NotificationService } from './services/notification.service';
 import { Notification } from './models/notification';
 import { ExpenseService } from './services/expense.service';
+import { AuthInterceptorService } from './services/authInterceptor.service';
 import { MatDialog,MatDialogRef,MAT_DIALOG_DATA } from '@angular/material';
 import { Observable } from 'rxjs';
+import {HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http';
 //import {routerTransition} from './'
 @Component({
   selector: 'app-notify',
@@ -64,7 +66,8 @@ export class NotifyComponent implements OnInit {
 
 
   ,
-  providers:[ ProductService ,RegisterService,LoginService,OutletService,UserService,RouteService,VanService,RouteOutletService,NotificationService,ExpenseService]
+  providers:[ ProductService ,RegisterService,LoginService,OutletService,UserService,RouteService,VanService,RouteOutletService,NotificationService,ExpenseService
+  ,{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptorService,multi:true}]
   
 })
 export class AppComponent implements OnInit{
@@ -78,7 +81,7 @@ constructor(private notificationService:NotificationService,private loginService
 
 ngOnInit()
 {
-  Observable.interval(1000)
+  Observable.interval(10000)
   .takeWhile(() => true)
   .subscribe(i => {
     this.notificationService.getNotification().subscribe(data=>{
@@ -99,6 +102,7 @@ logOut() {
   localStorage.removeItem('isLoggedIn');
   localStorage.removeItem('userType');
   localStorage.removeItem('isShowNav');
+  localStorage.removeItem('token');
 }
 }
 

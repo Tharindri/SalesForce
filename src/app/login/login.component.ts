@@ -18,7 +18,7 @@ export class LoginComponent  {
   isSales:boolean;
   isFinance:boolean;
   isHR:boolean;
-
+  token:string;
 
  constructor(private loginService: LoginService, private route: ActivatedRoute, private router: Router) {
   }
@@ -42,12 +42,14 @@ export class LoginComponent  {
         this.userType = 'HR';
       else if(res.UserType === 'Sales')
         this.userType = 'Sales';
-      
+      this.token=res.Token;
       console.log(this.userId,this.userType);
       localStorage.setItem('isLoggedIn','true');
       localStorage.setItem('userId',this.userId);
       localStorage.setItem('userType',this.userType);
+      localStorage.setItem('token',this.token);
       console.log(localStorage.getItem('isLoggedIn'));
+      console.log(localStorage.getItem('token'));
       this.router.navigate(['/home']);
 }
 else{
@@ -65,6 +67,8 @@ logOut()
 {
   
   localStorage.removeItem('currentUser');
+  
+
   this.isLoggedIn=false;
   this.router.navigate(['/login']);
 }

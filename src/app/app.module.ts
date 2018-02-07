@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import { AppComponent,NotifyComponent } from './app.component';
 import { HttpModule } from '@angular/http';
 
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 import {MatDialogModule,MatDialogRef,MAT_DIALOG_DATA} from '@angular/material';
@@ -54,8 +54,8 @@ import { ExpensesComponent } from './expenses/expenses.component';
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
-    HttpModule,
     HttpClientModule,
+    HttpModule,
     MatDialogModule,
     CarouselModule.forRoot(),
     BsDatepickerModule.forRoot(),

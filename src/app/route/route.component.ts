@@ -129,9 +129,9 @@ export class RouteComponent implements OnInit {
   showMap(id: number) 
   {
     this.routeService.getLocations(id).subscribe(data => {
-      console.log(data);
+      //console.log(data);
       this.locations = data;
-      console.log(this.locations);
+      //console.log(this.locations);
       this.dialog.open(RootMapComponent, {
         data: { locations: this.locations },
         width: '800px'

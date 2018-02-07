@@ -38,7 +38,6 @@ export class AdminHrGuard implements CanActivate {
 export class AdminGuard implements CanActivate {
 
     constructor(private router: Router) { }
-
     canActivate() {
         if (localStorage.getItem('userType')=== 'Admin') {
             return true;
