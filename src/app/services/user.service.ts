@@ -11,7 +11,7 @@ import { User } from '../models/user';
 export class UserService {
   users: any[] = [];
 
-  private userUrl= 'http://salesforcenew20180126044103.azurewebsites.net/api/Users';
+  private userUrl= 'http://salesforcenew20180208102258.azurewebsites.net/api/Users';
   constructor(private _http: HttpClient) { }
   getUsers(): Observable<any> {
     return this._http.get<User>(this.userUrl)
@@ -39,7 +39,7 @@ updateUser(user:User)
 deleteUser(Id:number)
 {
   
-  return this._http.delete('http://salesforcenew20180126044103.azurewebsites.net/api/Users/'+Id);
+  return this._http.delete('http://salesforcenew20180208102258.azurewebsites.net/api/Users/'+Id);
 }
 
   private handleError(err: HttpErrorResponse){

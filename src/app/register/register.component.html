@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://bootswatch.com/3/superhero/bootstrap.min.css">
 <body background="./assets/images2.jpg">
   <h3>Register</h3>
-<form class="form-horizontal"novalidate #f="ngForm" (ngSubmit)="onSubmit(f)" >
+<form class="form-horizontal" #f="ngForm" (ngSubmit)="post()" novalidate >
 
   <fieldset><br>
 
@@ -24,23 +24,28 @@
         </div>
         </div>
       <div *ngIf="inputUsername.errors?.required && inputUsername.touched" class="alert alert-danger">UserName is required</div>
-        <div class="form-group">
+      
+      <div class="form-group">
           <label for="inputEmail" class="col-lg-2 control-label">Email</label>
           <div class="col-lg-5">
-            <input type="text" class="form-control" id="inputEmail" [(ngModel)]="registerData.Email" name="Email" placeholder="Email">
+            <input type="text" class="form-control" [(ngModel)]="registerData.Email" #inputEmail="ngModel" name="Email" placeholder="Email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
           </div>
         </div>
-
+        <div *ngIf="inputEmail.errors?.required && inputEmail.touched" class="alert alert-danger">Email is required</div>
+        <div *ngIf="inputEmail.errors?.pattern && inputEmail.touched" class="alert alert-danger">Email is not valid</div>
+     
+        
 
       <div class="form-group">
         <label for="inputPassword" class="col-lg-2 control-label">Password</label>
         <div class="col-lg-5">
-          <input type="password" class="form-control" [(ngModel)]="registerData.Passwords" #inputPassword="ngModel" name="password" placeholder="Password" minlength="5" required>
+          <input type="password" class="form-control" [(ngModel)]="registerData.Passwords" #inputPassword="ngModel" name="password" placeholder="Password" minlength="5" required >
       </div>
       </div>
       <div *ngIf="inputPassword.errors?.required && inputPassword.touched" class="alert alert-danger">Password is required</div>
       <div *ngIf="inputPassword.errors?.minlength && inputPassword.touched" class="alert alert-danger">Password must be atleast 5 characters.</div>
       
+
       <div class="form-group">
         <label for="inputFirstName" class="col-lg-2 control-label">First Name</label>
         <div class="col-lg-5">
@@ -117,7 +122,7 @@
       <div class="form-group">
         <div class="col-lg-10 col-lg-offset-2">
           <button type="reset" class="btn btn-default">Cancel</button>
-          <button type="submit" class="btn btn-primary" (click)="post()">Submit</button>
+          <button [disabled]="!f.form.valid" type="submit" class="btn btn-primary" (click)="post()">Submit</button>
         </div>
       </div>
     </fieldset>

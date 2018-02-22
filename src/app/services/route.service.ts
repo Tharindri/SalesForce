@@ -11,7 +11,7 @@ import { Route } from '../models/route';
 export class RouteService {
   routes: any[] = [];
 
-  private routeUrl= 'http://salesforcenew20180126044103.azurewebsites.net/api/Route';
+  private routeUrl= 'http://salesforcenew20180208102258.azurewebsites.net/api/Route';
   constructor(private http: HttpClient) { }
   getRoutes(): Observable<any> {
     return this.http.get<Route>(this.routeUrl)
@@ -36,10 +36,17 @@ updateRoute(route:Route)
   console.log(route);
   return this.http.put<Route>(this.routeUrl,route);
 }
+deleteRoute(Id:number)
+{
+  
+  return this.http.delete('http://salesforcenew20180208102258.azurewebsites.net/api/Route/'+Id);
+  
+}
+
 
 getLocations(id: number): Observable<any> 
 {
-  return this.http.get('http://salesforcenew20180126044103.azurewebsites.net/api/OutletsOfTheRoute/'+id)
+  return this.http.get('http://salesforcenew20180208102258.azurewebsites.net/api/OutletsOfTheRoute/'+id)
     .map(response => response);
 }
   private handleError(err: HttpErrorResponse){

@@ -12,7 +12,7 @@ import { RouteOutlet } from '../models/routeOutlet';
 
 @Injectable()
 export class ExpenseService {
-    private expenseUrl= 'http://salesforcenew20180126044103.azurewebsites.net/api/Expenses';
+    private expenseUrl= 'http://salesforcenew20180208102258.azurewebsites.net/api/Expenses';
     constructor(private http: HttpClient) { }
 
     getExpense():Observable<any>{
@@ -30,7 +30,7 @@ export class ExpenseService {
       updateStatus(status:String,Id:number)
       {
        console.log(status,Id);
-        return this.http.put('http://salesforcenew20180126044103.azurewebsites.net/api/Expenses/'+Id,{params:{status:status}});
+        return this.http.put('http://salesforcenew20180208102258.azurewebsites.net/api/Expenses/'+Id,{params:{status:status}});
       }
 
 }

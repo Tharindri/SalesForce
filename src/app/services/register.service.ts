@@ -9,7 +9,7 @@ import { User } from '../models/user';
 
 @Injectable()
 export class RegisterService {
-    private userUrl= 'http://salesforcenew20180126044103.azurewebsites.net/api/Users';
+    private userUrl= 'http://salesforcenew20180208102258.azurewebsites.net/api/Users';
     constructor(private http: HttpClient) { }
 
     sendUserRegistration(registerData:User):Observable<any>{

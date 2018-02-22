@@ -125,6 +125,31 @@ export class RouteComponent implements OnInit {
     }
     this.routeForm=false;
   }
+  updateRoute(route:Route){
+    
+    this.routeService.updateRoute(this.editedRoute).subscribe(route=>{
+    
+    });
+    this.editRouteForm=false;
+    this.editedRoute={};
+    }
+    
+    removeRoute(Id:number)
+    {
+      
+    this.routeService.deleteRoute(Id).subscribe(route=>{
+      this.routes = this.routes.filter(h => h !== route);
+      console.log(route);
+    });
+    }
+    cancelEdits()
+    {
+      this.editedRoute={};
+      this.editRouteForm=false;
+    
+    }
+    
+    
 
   showMap(id: number) 
   {

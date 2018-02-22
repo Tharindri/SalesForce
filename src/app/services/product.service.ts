@@ -18,12 +18,12 @@ const httpOptions = {
 export class ProductService {
   products: any[] = [];
   
-  private _productUrl= 'http://salesforcenew20180126044103.azurewebsites.net/api/Product';
+  private _productUrl= 'http://salesforcenew20180208102258.azurewebsites.net/api/Product';
   constructor(private _http: HttpClient) { }
 
-// get token(){
-//   return localStorage.getItem('token');
-// }
+ get token(){
+   return localStorage.getItem('token');
+ }
 
   getProducts(): Observable<any> {
     
@@ -34,7 +34,7 @@ export class ProductService {
   addProduct(product:IProduct)
   {
     console.log(product);
-    return this._http.post<IProduct>(this._productUrl, product, httpOptions);
+    return this._http.post<IProduct>(this._productUrl, product,httpOptions);
 
   }
 
@@ -46,7 +46,8 @@ export class ProductService {
   deleteProduct(Id:number)
   {
     
-    return this._http.delete('http://salesforcenew20180126044103.azurewebsites.net/api/Product/'+Id,httpOptions);
+    return this._http.delete('http://salesforcenew20180208102258.azurewebsites.net/api/Product/'+Id,httpOptions);
+    //return this._http.get<any>(this._productUrl);
   }
 
 

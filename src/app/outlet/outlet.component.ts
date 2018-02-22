@@ -18,13 +18,29 @@ export class OutletComponent implements OnInit {
      isNewForm:boolean;
      editedOutlet:any={};
      isShow:boolean=false;
-     
+     _listFilter:string;
+     get listFilter():string{
+      return this._listFilter;
+      }
+      
+      set listFilter(value:string){
+        this._listFilter=value;
+        this.filteredOutlets=this.listFilter?this.performFilter(this.listFilter):this.outlets;
+      }
+      filteredOutlets:Outlet[];
+         
   constructor(private outletService:OutletService) { 
-    this.outletService.getOutlets()
-    .subscribe(res => { this.outlets = res; },
-      error => this.errorMessage = <any>error);
+    // this.outletService.getOutlets()
+    // .subscribe(res => { this.outlets = res; },
+    //   error => this.errorMessage = <any>error);
   }
-
+  performFilter(filterBy:string):Outlet[]{
+    
+      filterBy=filterBy.toLocaleLowerCase();
+      return this.outlets.filter((outlet:Outlet)=>
+    outlet.Name.toLocaleLowerCase().indexOf(filterBy)!==-1);
+    }
+ 
 
 
   showEditOutletForm(outlet:Outlet)
@@ -100,6 +116,12 @@ export class OutletComponent implements OnInit {
 
 
   ngOnInit() {
+    this.outletService.getOutlets()
+    .subscribe(res => { this.outlets = res;
+      this.filteredOutlets = this.outlets;
+    },
+      error => this.errorMessage = <any>error);
+
     if(localStorage.getItem('userType')==='Sales' || localStorage.getItem('userType')==='Admin' ){
       this.isShow=true;
 

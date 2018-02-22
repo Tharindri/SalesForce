@@ -10,7 +10,7 @@ import { RouteOutlet } from '../models/routeOutlet';
 
 @Injectable()
 export class RouteOutletService {
-    private userRouteUrl= 'http://salesforcenew20180126044103.azurewebsites.net/api/RoutesOutlets';
+    private userRouteUrl= 'http://salesforcenew20180208102258.azurewebsites.net/api/RoutesOutlets';
     constructor(private http: HttpClient) { }
 
 sendUserRoute(userRoutedata:RouteOutlet):Observable<any>{

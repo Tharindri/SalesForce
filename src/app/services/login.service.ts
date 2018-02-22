@@ -13,7 +13,7 @@ import {RegisteredUser} from '../models/registereduser';
 export class LoginService {
     currentUser:User;
     
-    private userUrl= 'http://salesforcenew20180126044103.azurewebsites.net/api/Login';
+    private userUrl= 'http://salesforcenew20180208102258.azurewebsites.net/api/Login';
     constructor(private http: HttpClient) { }
 
    
@@ -25,7 +25,7 @@ export class LoginService {
         
         )
           .catch(this.handleError);
-           // .do(data => console.log('All: ' + JSON.stringify(data)))
+          
 
            
 

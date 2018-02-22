@@ -10,7 +10,7 @@ import { Van } from '../models/van';
 @Injectable()
 export class VanService {
     vans: any[] = [];
-    private vanUrl= 'http://salesforcenew20180126044103.azurewebsites.net/api/Van';
+    private vanUrl= 'http://salesforcenew20180208102258.azurewebsites.net/api/Van';
     constructor(private http: HttpClient) { }
 
     getVans(): Observable<any> {

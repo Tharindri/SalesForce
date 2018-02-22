@@ -1,6 +1,6 @@
 export class User {
     
-   Id:number; 
+    Id:number; 
     NIC: string;
     Username: string;
     Passwords: string;

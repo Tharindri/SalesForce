@@ -12,7 +12,7 @@ import { RouteOutlet } from '../models/routeOutlet';
 
 @Injectable()
 export class NotificationService {
-    private notificationUrl= 'http://salesforcenew20180126044103.azurewebsites.net/api/Leave';
+    private notificationUrl= 'http://salesforcenew20180208102258.azurewebsites.net/api/Leave';
     constructor(private http: HttpClient) { }
 
     getNotification():Observable<any>{
@@ -30,7 +30,7 @@ export class NotificationService {
       updateStatus(status:String,Id:number)
       {
        console.log(status,Id);
-        return this.http.put('http://salesforcenew20180126044103.azurewebsites.net/api/Leave/'+Id,{params:{status:status}});
+        return this.http.put('http://salesforcenew20180208102258.azurewebsites.net/api/Leave/'+Id,{params:{status:status}});
       }
 
 }
