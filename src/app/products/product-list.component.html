@@ -76,20 +76,34 @@
 
     <br/>
     <br/>
-  <form *ngIf="productForm">
+  <form *ngIf="productForm"  #f="ngForm" novalidate>
     <h4>Add New Product</h4>
 
-<p>Id : <input type="text" name="Id" [(ngModel)]="newProduct.Id"/></p>  
-<p>Name : <input type="text" name="Name" [(ngModel)]="newProduct.Name"/></p>
-<p>Brand : <input type="text" name="Brand" [(ngModel)]="newProduct.Brand"/></p>
-<p>Category : <input type="text" name="Category" [(ngModel)]="newProduct.Category"/></p>
-<p>ManufacturePrice : <input type="text" name="ManufacturePrice" [(ngModel)]="newProduct.ManufacturePrice"/></p>
-<p>RetailPrice : <input type="text" name="RetailPrice" [(ngModel)]="newProduct.RetailPrice"/></p>
-<p>Quantity : <input type="text" name="Quantity" [(ngModel)]="newProduct.Quantity"/></p>
-<p>Discount Type : <input type="text" name="DiscountType" [(ngModel)]="newProduct.DiscountType"/></p>
+<!-- <p>Id : <input type="text" name="Id" [(ngModel)]="newProduct.Id"/></p>   -->
+<p>Name : <input type="text" name="Name" [(ngModel)]="newProduct.Name" #inputName="ngModel" pattern="[A-Za-z]{1,}" required/></p>
+<div *ngIf="inputName.errors?.required && inputName.touched" class="alert alert-danger">Required</div>
+<div *ngIf="inputName.errors?.pattern && inputName.touched" class="alert alert-danger">Invalid</div>
+
+<p>Brand : <input type="text" name="Brand" [(ngModel)]="newProduct.Brand" #inputBrand="ngModel" pattern="[A-Za-z]{1,}" required/></p>
+<div *ngIf="inputBrand.errors?.required && inputBrand.touched" class="alert alert-danger">Required</div>
+<div *ngIf="inputBrand.errors?.pattern && inputBrand.touched" class="alert alert-danger">Invalid</div>
+
+<p>Category : <input type="text" name="Category" [(ngModel)]="newProduct.Category" #inputCategory="ngModel" pattern="[A-Za-z]+"required/></p>
+<div *ngIf="inputCategory.errors?.required && inputCategory.touched" class="alert alert-danger">Required</div>
+<div *ngIf="inputCategory.errors?.pattern && inputCategory.touched" class="alert alert-danger">Invalid</div>
+
+
+<p>ManufacturePrice : <input type="number" name="ManufacturePrice" [(ngModel)]="newProduct.ManufacturePrice"#inputPrice="ngModel" min="1"required /></p>
+<div *ngIf="inputPrice.errors?.required && inputPrice.touched" class="alert alert-danger">Required</div>
+
+<p>RetailPrice : <input type="number" name="RetailPrice" [(ngModel)]="newProduct.RetailPrice"#inputRetail="ngModel" min="1" required/></p>
+<div *ngIf="inputRetail.errors?.required && inputRetail.touched" class="alert alert-danger">Required</div>
+
+<p>Quantity : <input type="number" name="Quantity" [(ngModel)]="newProduct.Quantity" min="0"/></p>
+<p>Discount Type : <input type="number" name="DiscountType" [(ngModel)]="newProduct.DiscountType"/></p>
 
 <p>
-  <button type="button" class="btn btn-primary" (click)="saveProduct(newProduct)">Submit</button>
+  <button type="button"[disabled]="!f.form.valid" class="btn btn-primary" (click)="saveProduct(newProduct)">Submit</button>
   <button type="button" class="btn btn-warning">Cancel</button>
   
 </p>
@@ -127,20 +141,36 @@
 
 
 
-  <form *ngIf="editProductForm">
+  <form *ngIf="editProductForm" #f1="ngForm" novalidate>
     <h2>Edit Product Details</h2>
 
-<p>Id : <input type="text" name="Id" [(ngModel)]="editedProduct.Id"/></p>  
-<p>Name : <input type="text" name="Name" [(ngModel)]="editedProduct.Name"/></p>
-<p>Brand : <input type="text" name="Brand" [(ngModel)]="editedProduct.Brand"/></p>
-<p>Category : <input type="text" name="Category" [(ngModel)]="editedProduct.Category"/></p>
-<p>ManufacturePrice : <input type="text" name="ManufacturePrice" [(ngModel)]="editedProduct.ManufacturePrice"/></p>
-<p>RetailPrice : <input type="text" name="RetailPrice" [(ngModel)]="editedProduct.RetailPrice"/></p>
-<p>Quantity : <input type="text" name="Quantity" [(ngModel)]="editedProduct.Quantity"/></p>
-<p>Discount Type : <input type="text" name="DiscountType" [(ngModel)]="editedProduct.DiscountType"/></p>
+<!-- <p>Id : <input type="text" name="Id" [(ngModel)]="editedProduct.Id"/></p>   -->
+<p>Name : <input type="text" name="Name" [(ngModel)]="editedProduct.Name" #inputName="ngModel" pattern="[A-Za-z]{1,}" required/></p>
+<div *ngIf="inputName.errors?.required && inputName.touched" class="alert alert-danger">Required</div>
+<div *ngIf="inputName.errors?.pattern && inputName.touched" class="alert alert-danger">Invalid</div>
+
+<p>Brand : <input type="text" name="Brand" [(ngModel)]="editedProduct.Brand" #inputBrand="ngModel" pattern="[A-Za-z]{1,}" required/></p>
+<div *ngIf="inputBrand.errors?.required && inputBrand.touched" class="alert alert-danger">Required</div>
+<div *ngIf="inputBrand.errors?.pattern && inputBrand.touched" class="alert alert-danger">Invalid</div>
+
+<p>Category : <input type="text" name="Category" [(ngModel)]="editedProduct.Category" #inputCategory="ngModel" pattern="[A-Za-z]{1,}" required/></p>
+<div *ngIf="inputCategory.errors?.required && inputCategory.touched" class="alert alert-danger">Required</div>
+<div *ngIf="inputCategory.errors?.pattern && inputCategory.touched" class="alert alert-danger">Invalid</div>
+
+<p>ManufacturePrice : <input type="number" name="ManufacturePrice" [(ngModel)]="editedProduct.ManufacturePrice" #inputPrice="ngModel" min=1 required/></p>
+<div *ngIf="inputPrice.errors?.required && inputName.touched" class="alert alert-danger">Required</div>
+
+<p>RetailPrice : <input type="number" name="RetailPrice" [(ngModel)]="editedProduct.RetailPrice"#inputRetail="ngModel" min=1 required/></p>
+<div *ngIf="inputRetail.errors?.required && inputRetail.touched" class="alert alert-danger">Required</div>
+
+<p>Quantity : <input type="number" name="Quantity" [(ngModel)]="editedProduct.Quantity"#inputQty="ngModel" min=1 required/></p>
+<div *ngIf="inputQty.errors?.required && inputQty.touched" class="alert alert-danger">Required</div>
+
+<p>Discount Type : <input type="number" name="DiscountType" [(ngModel)]="editedProduct.DiscountType"#inputDiscount="ngModel" min=1 required/></p>
+<div *ngIf="inputDiscount.errors?.required && inputDiscount.touched" class="alert alert-danger">Required</div>
 
 <p>
-  <button type="button" class="btn btn-primary" (click)="updateProduct(editedProduct)">Submit</button>
+  <button type="button" [disabled]="!f1.form.valid" class="btn btn-primary" (click)="updateProduct(editedProduct)">Submit</button>
   <button type="button" class="btn btn-warning" (click)="cancelEdits()">Cancel</button>
   
 </p>

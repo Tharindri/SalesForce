@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import { ProductService } from '../services/product.service';
 import { IProduct } from '../models/product';
+import {FormGroup,FormControl,Validators} from '@angular/forms';
 @Component({
 
   templateUrl: './product-list.component.html',

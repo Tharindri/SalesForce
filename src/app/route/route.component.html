@@ -90,14 +90,17 @@
     
 
 
-    <form *ngIf="routeForm">
+    <form *ngIf="routeForm"#f="ngForm" novalidate>
       <h4>Add New Route</h4>
   
-      <p>Id : <input type="text" name="Id" [(ngModel)]="newRoute.Id"/></p>  
-      <p>Name : <input type="text" name="Name" [(ngModel)]="newRoute.Name"/></p>
-      <p>Description : <input type="text" name="description" [(ngModel)]="newRoute.Description"/></p>
-  <p>
-    <button type="button" class="btn btn-success" (click)="saveRoute(newRoute)">Submit</button>
+      <!-- <p>Id : <input type="text" name="Id" [(ngModel)]="newRoute.Id"/></p>   -->
+      <p>Name : <input type="text" name="Name" [(ngModel)]="newRoute.Name"#inputName="ngModel" required/></p>
+      <div *ngIf="inputName.errors?.required && inputName.touched" class="alert alert-danger">Required</div>
+      
+      <p>Description : <input type="text" name="description" [(ngModel)]="newRoute.Description"#inputDes="ngModel" required/></p>
+      <div *ngIf="inputDes.errors?.required && inputName.touched" class="alert alert-danger">Required</div>
+      <p>
+    <button type="button"[disabled]="!f.form.valid" class="btn btn-success" (click)="saveRoute(newRoute)">Submit</button>
     <button type="button" class="btn btn-warning">Cancel</button>
     
   </p>
@@ -125,16 +128,19 @@
       </div>
       <div class="modal-body">
 
-    <form *ngIf="editRouteForm">
+    <form *ngIf="editRouteForm"#f="ngForm" novalidate>
       <h2>Edit Route Details</h2>
   
-      <p>Id : <input type="text" name="Id" [(ngModel)]="editedRoute.Id"/></p>  
-      <p>Name : <input type="text" name="Name" [(ngModel)]="editedRoute.Name"/></p>
-      <p>Description : <input type="text" name="Description" [(ngModel)]="editedRoute.Description"/></p>
+      <!-- <p>Id : <input type="text" name="Id" [(ngModel)]="editedRoute.Id"/></p>   -->
+      <p>Name : <input type="text" name="Name" [(ngModel)]="editedRoute.Name"#inputName="ngModel" required/></p>
+      <div *ngIf="inputName.errors?.required && inputName.touched" class="alert alert-danger">Required</div>
+
+      <p>Description : <input type="text" name="Description" [(ngModel)]="editedRoute.Description"#inputDes="ngModel" required/></p>
+      <div *ngIf="inputDes.errors?.required && inputName.touched" class="alert alert-danger">Required</div>
       
   
   <p>
-    <button type="button" class="btn btn-primary" (click)="updateRoute(editedRoute)">Submit</button>
+    <button type="button"[disabled]="!f.form.valid" class="btn btn-primary" (click)="updateRoute(editedRoute)">Submit</button>
     <button type="button" class="btn btn-warning" (click)="cancelEdits()">Cancel</button>
     
   </p>

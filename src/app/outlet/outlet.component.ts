@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { OutletService } from '../services/outlet.service';
 import { Outlet } from '../models/outlet';
-
+import { RouteService } from '../services/route.service';
+import { Route } from '../models/route';
 @Component({
   selector: 'app-outlet',
   templateUrl: './outlet.component.html',
@@ -19,6 +20,7 @@ export class OutletComponent implements OnInit {
      editedOutlet:any={};
      isShow:boolean=false;
      _listFilter:string;
+     routes:Route[];
      get listFilter():string{
       return this._listFilter;
       }
@@ -29,7 +31,7 @@ export class OutletComponent implements OnInit {
       }
       filteredOutlets:Outlet[];
          
-  constructor(private outletService:OutletService) { 
+  constructor(private outletService:OutletService,private routeService:RouteService) { 
     // this.outletService.getOutlets()
     // .subscribe(res => { this.outlets = res; },
     //   error => this.errorMessage = <any>error);
@@ -120,8 +122,13 @@ export class OutletComponent implements OnInit {
     .subscribe(res => { this.outlets = res;
       this.filteredOutlets = this.outlets;
     },
+    
       error => this.errorMessage = <any>error);
-
+      this.routeService.getRoutes() 
+      .subscribe(res => { this.routes = res;
+            
+          });
+           
     if(localStorage.getItem('userType')==='Sales' || localStorage.getItem('userType')==='Admin' ){
       this.isShow=true;
 

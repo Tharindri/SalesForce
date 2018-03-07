@@ -81,21 +81,39 @@
         <br/>
         <br/>
 
-    <form *ngIf="outletForm">
+    <form *ngIf="outletForm" #f="ngForm" novalidate>
       <h4>Add New Outlet</h4>
   
-  <p>Id : <input type="text" name="Id" [(ngModel)]="newOutlet.Id"/></p>  
-  <p>Name : <input type="text" name="Name" [(ngModel)]="newOutlet.Name"/></p>
-  <p>ContactNo : <input type="text" name="ContactNo" [(ngModel)]="newOutlet.ContactNo"/></p>
+  <!-- <p>Id : <input type="text" name="Id" [(ngModel)]="newOutlet.Id"/></p>   -->
+  <p>Name : <input type="text" name="Name" [(ngModel)]="newOutlet.Name" #inputName="ngModel"  required/></p>
+  <div *ngIf="inputName.errors?.required && inputName.touched" class="alert alert-danger">Required</div>
+  
+  <p>ContactNo : <input type="text" name="ContactNo" [(ngModel)]="newOutlet.ContactNo" required/></p>
   <p>Barcode : <input type="text" name="Barcode" [(ngModel)]="newOutlet.Barcode"/></p>
-  <p>Longitude : <input type="text" name="Longitude" [(ngModel)]="newOutlet.Longitude"/></p>
-  <p>Latitude : <input type="text" name="Latitude" [(ngModel)]="newOutlet.Latitude"/></p>
-  <p>OwnerName : <input type="text" name="OwnerName" [(ngModel)]="newOutlet.OwnerName"/></p>
-  <p>Email : <input type="text" name="Email" [(ngModel)]="newOutlet.Email"/></p>
+  <p>Longitude : <input type="number" name="Longitude" [(ngModel)]="newOutlet.Longitude"/></p>
+  <p>Latitude : <input type="number" name="Latitude" [(ngModel)]="newOutlet.Latitude"/></p>
+  <p>OwnerName : <input type="text" name="OwnerName" [(ngModel)]="newOutlet.OwnerName" #inputOwner="ngModel"  required/></p>
+  <div *ngIf="inputOwner.errors?.required && inputOwner.touched" class="alert alert-danger">Required</div>
+  <!-- <div *ngIf="inputOwner.errors?.pattern && inputOwner.touched" class="alert alert-danger">Invalid</div> -->
+
+  <p>Email : <input type="text" name="Email" [(ngModel)]="newOutlet.Email" #inputEmail="ngModel" name="Email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required/></p>
+  <div *ngIf="inputEmail.errors?.required && inputEmail.touched" class="alert alert-danger">Required</div>
+  <div *ngIf="inputEmail.errors?.pattern && inputEmail.touched" class="alert alert-danger">Invalid</div>
+
   <p>Status : <input type="text" name="Status" [(ngModel)]="newOutlet.Status"/></p>
-  <p>RouteId : <input type="text" name="RouteId" [(ngModel)]="newOutlet.RouteId"/></p>
-  <p>
-    <button type="button" class="btn btn-success" (click)="saveOutlet(newOutlet)">Submit</button>
+  <p>RouteId : 
+    <button click="getRoutes()">
+            <select [(ngModel)]="newOutlet.RouteId" name="RouteId">
+          <option *ngFor="let route of routes" [ngValue]="route.Id">
+            {{route.Id}}
+          </option>
+        </select>
+      </button>
+      
+    <!-- <input type="text" name="RouteId" [(ngModel)]="newOutlet.RouteId"/> -->
+  </p>
+    <p>
+    <button type="button" [disabled]="!f.form.valid" class="btn btn-success" (click)="saveOutlet(newOutlet)">Submit</button>
     <button type="button" class="btn btn-warning">Cancel</button>
     
   </p>
@@ -126,22 +144,38 @@
       </div>
       <div class="modal-body">
 
-    <form *ngIf="editOutletForm">
+    <form *ngIf="editOutletForm" #f="ngForm" novalidate>
       <h2>Edit Outlet Details</h2>
   
-      <p>Id : <input type="text" name="Id" [(ngModel)]="editedOutlet.Id"/></p>  
-      <p>Name : <input type="text" name="Name" [(ngModel)]="editedOutlet.Name"/></p>
+      <!-- <p>Id : <input type="text" name="Id" [(ngModel)]="editedOutlet.Id"/></p>   -->
+      <p>Name : <input type="text" name="Name" [(ngModel)]="editedOutlet.Name" #inputName="ngModel"  required/></p>
+      <div *ngIf="inputName.errors?.required && inputName.touched" class="alert alert-danger">Required</div>
+      
       <p>ContactNo : <input type="text" name="ContactNo" [(ngModel)]="editedOutlet.ContactNo"/></p>
       <p>Barcode : <input type="text" name="Barcode" [(ngModel)]="editedOutlet.Barcode"/></p>
       <p>Longitude : <input type="text" name="Longitude" [(ngModel)]="editedOutlet.Longitude"/></p>
       <p>Latitude : <input type="text" name="Latitude" [(ngModel)]="editedOutlet.Latitude"/></p>
-      <p>OwnerName : <input type="text" name="OwnerName" [(ngModel)]="editedOutlet.OwnerName"/></p>
-      <p>Email : <input type="text" name="Email" [(ngModel)]="editedOutlet.Email"/></p>
+      <p>OwnerName : <input type="text" name="OwnerName" [(ngModel)]="editedOutlet.OwnerName"#inputOwner="ngModel"  required/></p>
+      <div *ngIf="inputOwner.errors?.required && inputOwner.touched" class="alert alert-danger">Required</div>
+      <!-- <div *ngIf="inputOwner.errors?.pattern && inputOwner.touched" class="alert alert-danger">Invalid</div> -->
+
+      <p>Email : <input type="text" name="Email" [(ngModel)]="editedOutlet.Email"#inputEmail="ngModel" name="Email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required/></p>
+      <div *ngIf="inputEmail.errors?.required && inputEmail.touched" class="alert alert-danger">Required</div>
+      <div *ngIf="inputEmail.errors?.pattern && inputEmail.touched" class="alert alert-danger">Invalid</div>
+
       <p>Status : <input type="text" name="Status" [(ngModel)]="editedOutlet.Status"/></p>
-      <p>RouteId : <input type="text" name="RouteId" [(ngModel)]="editedOutlet.RouteId"/></p>
+      <p>RouteId : 
+          <button click="getRoutes()">
+              <select [(ngModel)]="editedOutlet.RouteId" name="RouteId">
+            <option *ngFor="let route of routes" [ngValue]="route.Id">
+              {{route.Id}}
+            </option>
+          </select>
+        </button>
+        <!-- <input type="text" name="RouteId" [(ngModel)]="editedOutlet.RouteId"/></p> -->
   
   <p>
-    <button type="button" class="btn btn-primary" (click)="updateOutlet(editedOutlet)">Submit</button>
+    <button type="button" [disabled]="!f.form.valid" class="btn btn-primary" (click)="updateOutlet(editedOutlet)">Submit</button>
     <button type="button" class="btn btn-warning" (click)="cancelEdits()">Cancel</button>
     
   </p>

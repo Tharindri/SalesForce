@@ -9,6 +9,7 @@ export interface IProduct{
   RetailPrice: number;
   Quantity: number;
   DiscountType:string;
+  Image:string;
 }
 
 
